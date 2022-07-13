@@ -167,7 +167,7 @@ const { list, containerProps, wrapperProps } = useVirtualList(filteredList, {
             @focusout="closeSearch"
             type="text"
             placeholder="press enter"
-            class="input input-bordered input-info w-full max-w-xs"
+            class="dark:bg-slate-700 dark:text-white input input-bordered input-info w-full max-w-xs"
           />
         </div>
         <div v-if="!isSearch" class="relative mt-1 w-full">
