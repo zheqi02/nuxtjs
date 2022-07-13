@@ -1,23 +1,27 @@
 <script setup lang="ts">
 const slug = useRoute().params.slug.toString().replace(/,/g, '/')
+
 const { data: blog } = await useAsyncData(slug, () => {
   return queryContent(slug).findOne()
 })
+
 const toc = computed(() => {
   if (!blog.value) return []
   const items = blog.value.excerpt?.children
   if (!items) return []
   const toc = []
   const tags = ['h2', 'h3', 'h4', 'h5', 'h6']
-  items.forEach(item => {
-    if (tags.includes(item.tag)) {
-      toc.push({
-        id: item.props.id,
-        title: item.props.id.toString().replace(/-/g, ' '),
-        depth: Number(item.tag.replace(/h/g, ''))
-      })
+  items.forEach(
+    (item: { tag: string; props: { id: { toString: () => string } } }) => {
+      if (tags.includes(item.tag)) {
+        toc.push({
+          id: item.props.id,
+          title: item.props.id.toString().replace(/-/g, ' '),
+          depth: Number(item.tag.replace(/h/g, ''))
+        })
+      }
     }
-  })
+  )
   return toc
 })
 useHead({
@@ -29,11 +33,11 @@ useHead({
   <div>
     <main>
       <article
-        class="lg:pt-20 pt-10 relative flex items-start lg:space-x-10 px-[5%] lg:px-[10%]"
+        class="dark:text-white dark:bg-zinc-800 lg:pt-20 pt-10 relative flex items-start lg:space-x-10 px-[5%] lg:px-[10%]"
       >
         <div
           v-if="blog.excerpt"
-          class="w-[300px] p-5 sticky top-3 border rounded-md bg-white hidden lg:block"
+          class="dark:bg-black w-[300px] p-5 sticky top-3 border rounded-md bg-white hidden lg:block"
         >
           <h2 class="text-sm font-bold mb-4">Table Of Contents</h2>
           <ul class="space-y-2">
@@ -54,7 +58,7 @@ useHead({
         </div>
         <ClientOnly>
           <ContentRenderer
-            class="prose lg:prose-base prose-sm prose-slate blog-link pr-7 max-w-none"
+            class="dark:text-white prose lg:prose-base prose-sm prose-slate blog-link pr-7 max-w-none"
             :value="blog"
           >
             <template #empty>

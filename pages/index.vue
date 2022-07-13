@@ -15,7 +15,7 @@ useHead({
     <main>
       <section class="lg:px-[15%] px-[5%] pt-20">
         <h1
-          class="lg:text-5xl text-2xl leading-normal font-semibold text-center"
+          class="dark:text-white lg:text-5xl text-2xl leading-normal font-semibold text-center"
         >
           Check Out Our Latest Blog Posts
         </h1>
@@ -50,7 +50,7 @@ useHead({
                   :key="`childNav-${child._path}-${k}-${i}`"
                 >
                   <li
-                    class="list-item text-sm text-gray-600 hover:text-primary-900 underline underline-offset-4 decoration-wavy decoration-primary/40 hover:decoration-primary transition-all"
+                    class="list-item text-sm dark:text-white text-gray-600 hover:text-primary-900 underline underline-offset-4 decoration-wavy decoration-primary/40 hover:decoration-primary transition-all"
                   >
                     <NuxtLink :to="`/blog${child._path}`">
                       {{ child.title }}
@@ -60,7 +60,7 @@ useHead({
               </ul>
               <ul v-else class="list-disc list-inside mt-4 pl-2 space-y-3">
                 <li
-                  class="list-item text-sm text-gray-600 hover:text-primary-900 underline underline-offset-4 decoration-wavy decoration-primary/40 hover:decoration-primary transition-all"
+                  class="list-item text-sm dark:text-white text-gray-600 hover:text-primary-900 underline underline-offset-4 decoration-wavy decoration-primary/40 hover:decoration-primary transition-all"
                 >
                   <NuxtLink :to="`/blog${b._path}`"> Get Started </NuxtLink>
                 </li>

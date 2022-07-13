@@ -20,7 +20,7 @@ export default <RouterConfig>{
         const heading = document.querySelector(to.hash) as any
 
         return window.scrollTo({
-          top: heading.offsetTop,
+          top: heading?.offsetTop,
           behavior: 'smooth'
         })
       })
