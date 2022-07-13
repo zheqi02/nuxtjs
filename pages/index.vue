@@ -6,6 +6,8 @@ const { data: blogNav } = await useAsyncData('navigation', () => {
 useHead({
   title: 'Content Blog'
 })
+
+let isHello = $ref(false)
 </script>
 
 <template>
@@ -15,10 +17,12 @@ useHead({
         <h1
           class="dark:text-white lg:text-5xl text-2xl leading-normal font-semibold text-center"
         >
-          Check Out Our Latest Blog Posts
-          <label class="swap swap-flip text-3xl ml-1">
+          <span :class="isHello && 'animate-text-pop-up-top'"
+            >Check Out Our Latest Blog Posts</span
+          >
+          <label title="hello" class="swap swap-flip text-3xl ml-1">
             <!-- this hidden checkbox controls the state -->
-            <input type="checkbox" />
+            <input type="checkbox" @click="isHello = !isHello" />
             <div class="swap-on">😈</div>
             <div class="swap-off">😇</div>
           </label>
@@ -57,6 +61,7 @@ useHead({
           </div>
         </h1>
       </section>
+      <section></section>
       <section class="lg:px-[15%] px-[5%] lg:pt-20 pt-14">
         <p
           class="text-center uppercase font-medium tracking-wider mb-10 text-gray-500"
@@ -68,7 +73,7 @@ useHead({
             v-for="(b, i) in blogNav[0].children"
             :key="`blogNavItem-${b._path}-${i}`"
           >
-            <div class="px-7 py-5 rounded-lg border-2">
+            <div class="px-7 py-5 rounded-lg border-2 border-emerald-100">
               <h2 class="text-lg font-semibold rainbow-text">
                 {{ b.title }}
               </h2>
@@ -105,5 +110,4 @@ useHead({
   </div>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
