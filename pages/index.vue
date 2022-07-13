@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { developADocument } from '#imports'
+import { Icon } from '@iconify/vue'
 const { data: blogNav } = await useAsyncData('navigation', () => {
   return fetchContentNavigation(queryContent('blog'))
 })
@@ -8,6 +10,7 @@ useHead({
 })
 
 let isHello = $ref(false)
+const linkList = ref(developADocument)
 </script>
 
 <template>
@@ -61,7 +64,6 @@ let isHello = $ref(false)
           </div>
         </h1>
       </section>
-      <section></section>
       <section class="lg:px-[15%] px-[5%] lg:pt-20 pt-14">
         <p
           class="text-center uppercase font-medium tracking-wider mb-10 text-gray-500"
@@ -104,6 +106,25 @@ let isHello = $ref(false)
               </ul>
             </div>
           </template>
+        </div>
+      </section>
+      <section class="lg:px-[15%] px-[5%] lg:pt-20 pt-14">
+        <p
+          class="text-center uppercase font-medium tracking-wider mb-10 text-gray-500"
+        >
+          Quick Navigation
+        </p>
+        <div class="grid grid-cols-3 lg:grid-cols-10 gap-2">
+          <div
+            v-for="item in linkList"
+            :key="item.text"
+            class="flex items-center"
+          >
+            <Icon class="text-lg" :icon="item.icon"></Icon>
+            <a class="ml-1 link link-hover" :href="item.href">{{
+              item.text
+            }}</a>
+          </div>
         </div>
       </section>
     </main>

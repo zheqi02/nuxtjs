@@ -26,13 +26,79 @@ const handlerColorMode = () => (isDark.value = !isDark.value)
 const target = ref<HTMLElement | null>(null)
 useFocus(target, { initialValue: true })
 
+let value = $ref<string>('')
+
+interface Result {
+  path: string
+  id: string
+  res: string[]
+}
+
+interface ResultData {
+  path: string
+  text: string
+}
+
 let isSearch = $ref(true)
+let searchList: Result[] = $ref([])
+
+const closeSearch = () => {
+  setTimeout(() => {
+    isSearch = true
+  }, 100)
+}
+
 const searchStart = async () => {
-  const { data: blog } = await useAsyncData('blog', () => {
+  const { data } = await useAsyncData('blog', () => {
     return queryContent('blog').find()
   })
-  console.log(blog?.value)
+  const blog = toRaw(data.value)
+  const result: Result[] = []
+  blog.forEach(item => {
+    let path = item?._path || '/'
+    let nowId = ''
+    item.body?.children.forEach((e: any) => {
+      if (e.props?.id) {
+        nowId = e.props.id
+      }
+      if (e?.children) {
+        const searchData = (arr: Record<any, any>[]) => {
+          arr.forEach(each => {
+            if (each?.children) {
+              searchData(each.children)
+            } else {
+              if (each?.value && each.value.includes(value)) {
+                result.push({
+                  path,
+                  id: nowId,
+                  res: [each.value]
+                })
+              }
+            }
+          })
+        }
+        searchData(e.children)
+      }
+    })
+  })
+  searchList = result
 }
+
+const filteredList = computed(() => {
+  const arr: ResultData[] = []
+  searchList.forEach(item => {
+    item.res.forEach(e => {
+      arr.push({
+        path: `/blog/${item.path}#${item.id}`,
+        text: e
+      })
+    })
+  })
+  return arr
+})
+const { list, containerProps, wrapperProps } = useVirtualList(filteredList, {
+  itemHeight: 22
+})
 </script>
 
 <template>
@@ -95,13 +161,31 @@ const searchStart = async () => {
           />
           <input
             v-else
+            v-model="value"
             ref="target"
             @keydown.enter="searchStart"
-            @focusout="isSearch = true"
+            @focusout="closeSearch"
             type="text"
             placeholder="press enter"
             class="input input-bordered input-info w-full max-w-xs"
           />
+        </div>
+        <div v-if="!isSearch" class="relative mt-1 w-full">
+          <div
+            v-bind="(containerProps as any)"
+            class="h-60 w-full absolute z-10"
+          >
+            <div v-bind="wrapperProps">
+              <NuxtLink
+                v-for="item in list"
+                :key="item.index"
+                class="block h-6 w-full border truncate hover:bg-slate-400"
+                :href="item.data.path"
+              >
+                {{ item.data.text }}
+              </NuxtLink>
+            </div>
+          </div>
         </div>
         <div
           class="h-0.5 w-4/5 bg-primary mt-1 -translate-y-full scale-0 group-hover:scale-100 group-hover:translate-y-full transition-all"
