@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 const { data: blogNav } = await useAsyncData('navigation', () => {
   return fetchContentNavigation(queryContent('blog'))
 })
@@ -7,22 +6,55 @@ const { data: blogNav } = await useAsyncData('navigation', () => {
 useHead({
   title: 'Content Blog'
 })
-
 </script>
 
 <template>
-  <div class="dark:bg-gray-800 min-h-screen">
+  <div class="dark:bg-black min-h-screen">
     <main>
       <section class="lg:px-[15%] px-[5%] pt-20">
         <h1
           class="dark:text-white lg:text-5xl text-2xl leading-normal font-semibold text-center"
         >
           Check Out Our Latest Blog Posts
+          <label class="swap swap-flip text-3xl ml-1">
+            <!-- this hidden checkbox controls the state -->
+            <input type="checkbox" />
+            <div class="swap-on">😈</div>
+            <div class="swap-off">😇</div>
+          </label>
         </h1>
         <h1
           class="lg:text-6xl text-4xl text-center leading-normal font-bold rainbow-text"
         >
           Learn. Share. Grow.
+          <div class="rating gap-1">
+            <input
+              type="radio"
+              name="rating-3"
+              class="mask mask-heart bg-red-400"
+            />
+            <input
+              type="radio"
+              name="rating-3"
+              class="mask mask-heart bg-orange-400"
+              checked
+            />
+            <input
+              type="radio"
+              name="rating-3"
+              class="mask mask-heart bg-yellow-400"
+            />
+            <input
+              type="radio"
+              name="rating-3"
+              class="mask mask-heart bg-lime-400"
+            />
+            <input
+              type="radio"
+              name="rating-3"
+              class="mask mask-heart bg-green-400"
+            />
+          </div>
         </h1>
       </section>
       <section class="lg:px-[15%] px-[5%] lg:pt-20 pt-14">
@@ -73,4 +105,5 @@ useHead({
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+</style>

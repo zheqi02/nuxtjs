@@ -6,6 +6,11 @@ const links = [
   {
     icon: 'carbon:blog',
     link: '/'
+  },
+  {
+    icon: 'line-md:github-loop',
+    link: 'https://github.com/zhe-qi',
+    blank: '_blank'
   }
 ]
 
@@ -20,9 +25,10 @@ const handlerColorMode = () => (isDark.value = !isDark.value)
       <span class="rainbow-text">zhe-qi</span>
     </NuxtLink>
     <nav class="flex items-center space-x-7 text-gray-600">
-      <template v-for="(n, i) in links" :key="`navLink-${i}`">
+      <template v-for="(n, _) in links" :key="`navLink-${i}`">
         <NuxtLink
           :to="n.link"
+          :target="n.blank"
           class="inline-block nav-link hover:text-primary group"
         >
           <div class="flex items-center space-x-2">

@@ -13,4 +13,8 @@ useHead({
   </div>
 </template>
 
-<style scoped></style>
+<style>
+#app {
+  @apply relative;
+}
+</style>
