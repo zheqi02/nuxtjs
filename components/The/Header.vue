@@ -10,8 +10,8 @@ const links = [
   },
   {
     icon: 'line-md:list-3-twotone',
-    link: '/',
-    text: 'Projects'
+    link: '/project',
+    text: 'Project'
   },
   {
     icon: 'line-md:github-loop',
