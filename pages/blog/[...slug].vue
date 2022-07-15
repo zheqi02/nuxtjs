@@ -33,7 +33,7 @@ useHead({
   <div>
     <main>
       <article
-        class="dark:text-white dark:bg-zinc-800 lg:pt-20 pt-10 relative flex items-start lg:space-x-10 px-[5%] lg:px-[10%]"
+        class="dark:text-white dark:bg-zinc-800 max-w-max overflow-x-hidden lg:pt-20 pt-10 relative flex items-start lg:space-x-10 px-[5%] lg:px-[10%]"
       >
         <div
           v-if="blog.excerpt"
@@ -48,7 +48,7 @@ useHead({
                     'text-sm ml-4': t.depth == 2,
                     'text-[13px] ml-6': t.depth > 2
                   }"
-                  class="capitalize"
+                  class="capitalize truncate"
                   :to="`#${t.id}`"
                   >{{ t.title }}</NuxtLink
                 >
@@ -58,7 +58,7 @@ useHead({
         </div>
         <ClientOnly>
           <ContentRenderer
-            class="dark:text-white prose lg:prose-base prose-sm prose-slate blog-link pr-7 max-w-none"
+            class="dark:text-white prose lg:prose-base prose-sm prose-slate pr-7 blog-link w-screen lg:max-w-none"
             :value="blog"
           >
             <template #empty>

@@ -130,9 +130,7 @@ const { list, containerProps, wrapperProps } = useVirtualList(filteredList, {
           class="h-0.5 w-4/5 bg-primary mt-1 -translate-y-full scale-0 group-hover:scale-100 group-hover:translate-y-full transition-all"
         ></div>
       </div>
-      <div
-        class="inline-block cursor-pointer hover:text-primary group"
-      >
+      <div class="inline-block cursor-pointer hover:text-primary group">
         <div class="flex items-center space-x-2">
           <Icon
             v-if="isSearch"
@@ -161,7 +159,7 @@ const { list, containerProps, wrapperProps } = useVirtualList(filteredList, {
               <NuxtLink
                 v-for="item in list"
                 :key="item.index"
-                class="block h-6 w-full border truncate hover:bg-slate-400"
+                class="block h-6 mt-[1px] w-full border truncate hover:text-pink-400 hover:bg-sky-100"
                 :href="item.data.path"
               >
                 {{ item.data.text }}
