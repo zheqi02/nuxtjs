@@ -2,72 +2,67 @@
 import { Icon } from '@iconify/vue'
 const id = useRoute().params.id
 
-const { data: product } = await useAsyncData('product-' + id, async () => {
+const { data: item } = await useAsyncData('item-' + id, async () => {
   const q = await queryContent('project').only('body').findOne()
   return q.body.find(p => p.id == parseInt(id as string))
 })
 
 // function used to format the price
-const formatPrice = price => {
-  return new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD'
-  }).format(price)
-}
+const formatPrice = () =>
+  new Intl.DateTimeFormat('zh-CN').format(new Date(Date.UTC(2022, 4, 1)))
 
 // Set header
 useHead({
-  title: `${product.value.title} for ${formatPrice(product.value.price)}`
+  title: `ZheQi ${item.value.title}`
 })
 </script>
 
 <template>
   <div>
     <main>
-      <section class="dark:bg-black lg:px-[10%] pt-10 px-[5%]">
+      <section class="dark:bg-black lg:px-[10%] pt-10 px-[5%] pb-16">
         <div class="flex relative items-start flex-col lg:flex-row gap-7">
           <div class="flex-1">
             <img
               class="w-full object-contain h-[90%]"
-              :src="product.image"
-              :alt="product.title"
+              :src="item.image"
+              :alt="item.title"
             />
           </div>
           <div class="flex-1">
             <p
               class="capitalize text-sm px-4 py-1 bg-gray-200 inline-block rounded text-gray-500"
             >
-              {{ product.category }}
+              {{ item.category }}
             </p>
             <h1 class="font-bold lg:text-3xl text-2xl my-5 lg:my-6">
-              {{ product.title }}
+              {{ item.title }}
             </h1>
             <div class="flex items-center space-x-1">
-              <template v-for="(r, i) in 5" :key="`productRating-${i}`">
+              <span>难度：</span>
+              <div v-for="(r, i) in 5" :key="`itemRating-${i}`">
                 <Icon
                   icon="ri:star-fill"
                   :class="{
-                    'text-primary-500': i < parseInt(product.rating.rate),
-                    'text-gray-300': i >= parseInt(product.rating.rate)
+                    'text-yellow-200': i < Math.round(item.rating.rate)
                   }"
                 />
-              </template>
-              <span class="text-xs ml-2"
-                >{{ product.rating.count }} reviews</span
-              >
+              </div>
             </div>
-
+            <div class="text-lg">
+              star: <span class="text-red-400">{{ item.rating.star }}</span>
+            </div>
             <p class="lg:text-3xl text-2xl mt-8">
-              {{ formatPrice(product.price) }}
+              {{ formatPrice() }}
             </p>
             <p
               class="mt-5 text-gray-500 whitespace-pre-wrap text-sm lg:text-base"
-              v-html="product.description"
+              v-html="item.description"
             ></p>
             <div class="mt-12 flex items-center space-x-5">
-              <button class="rainbow-bg text-white py-4 rounded-md w-full">
-                Add To Cart
-              </button>
+              <NuxtLink :href="item.github" class="rainbow-bg text-white text-center py-4 rounded-md w-full">
+                To GitHub
+              </NuxtLink>
               <button>
                 <Icon icon="ph:heart-straight" class="text-gray-500 w-7 h-7" />
               </button>

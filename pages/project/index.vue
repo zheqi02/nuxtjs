@@ -1,58 +1,49 @@
 <script setup lang="ts">
-
-const { data: products } = await useAsyncData('products', () => {
+const { data: items } = await useAsyncData('items', () => {
   return queryContent('project').find()
 })
 
-const categories = products.value[0].body.reduce((acc, product) => {
-  if (!acc.includes(product.category)) {
-    acc.push(product.category)
-  }
-  return acc
-}, [])
-//var used to store the active category
+const categories = items.value[0].body.reduce(
+  (acc: any[], product: { category: any }) => {
+    if (!acc.includes(product.category)) acc.push(product.category)
+    return acc
+  },
+  []
+)
+
 const activeCategory = ref(null)
-// function used to set the active category
-const setCategory = category => {
+
+const setCategory = (category: any) => {
   activeCategory.value = category
-  useRouter().push({
-    query: {
-      category: category
-    }
-  })
+  useRouter().push({ query: { category } })
 }
-// set category on mount if it exist in query
-onMounted(() => {
-  if (useRoute().query.category) {
-    activeCategory.value = useRoute().query.category
-  }
+
+onMounted(
+  () =>
+    useRoute().query.category &&
+    (activeCategory.value = useRoute().query.category)
+)
+
+const formatPrice = () =>
+  new Intl.DateTimeFormat('zh-CN').format(new Date(Date.UTC(2022, 4, 1)))
+
+const filteritems = computed(() => {
+  if (!activeCategory.value) return items.value[0].body
+  return items.value[0].body.filter(
+    (product: { category: string }) =>
+      product.category.toLowerCase() == activeCategory.value.toLowerCase()
+  )
 })
-// function used to format the price
-const formatPrice = price => {
-  return new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD'
-  }).format(price)
-}
-// function used to filter the products by category
-const filterProducts = computed(() => {
-  if (!activeCategory.value) {
-    return products.value[0].body
-  }
-  return products.value[0].body.filter(product => {
-    return product.category.toLowerCase() == activeCategory.value.toLowerCase()
-  })
-})
-// Set header
+
 useHead({
-  title: 'Content Project'
+  title: 'ZheQi Project'
 })
 </script>
 
 <template>
   <div>
     <main>
-      <section class="lg:px-[15%] px-[5%] pt-20 dark:bg-black ">
+      <section class="lg:px-[15%] px-[5%] pt-20 dark:bg-black">
         <h1
           class="lg:text-5xl text-2xl leading-normal font-semibold text-center"
         >
@@ -89,12 +80,12 @@ useHead({
               </button>
             </template>
           </div>
-          <div class=" grid grid-cols-1 lg:grid-cols-4 gap-10 lg:mt-20">
+          <div class="grid grid-cols-1 lg:grid-cols-4 gap-10 lg:mt-20">
             <template
-              v-for="(p, i) in filterProducts"
+              v-for="(p, i) in filteritems"
               :key="`product-${i}-${p.id}`"
             >
-              <Discount
+              <Recommend
                 class="dark:bg-slate-800 lg:col-span-2 rounded bg-slate-900 text-white p-10"
                 v-if="i === 0 && !activeCategory"
               />
@@ -109,9 +100,9 @@ useHead({
                   class="w-full h-[300px] object-contain object-center"
                 />
                 <div class="p-3">
-                  <h2 class="text-xs">{{ p.title }}</h2>
+                  <h2 class="text-xl">{{ p.title }}</h2>
                   <p class="font-bold text-sm mt-2">
-                    {{ formatPrice(p.price) }}
+                    {{ formatPrice() }}
                   </p>
                 </div>
               </NuxtLink>

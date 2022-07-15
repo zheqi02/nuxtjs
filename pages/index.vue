@@ -1,16 +1,30 @@
 <script setup lang="ts">
-import { developADocument } from '#imports'
+import { developADocument, isDark } from '#imports'
 import { Icon } from '@iconify/vue'
 const { data: blogNav } = await useAsyncData('navigation', () => {
   return fetchContentNavigation(queryContent('blog'))
 })
 
 useHead({
-  title: 'Content Blog'
+  title: 'ZheQi Blog'
 })
 
 let isHello = $ref(false)
-const linkList = ref(developADocument)
+let linkList = $ref(developADocument)
+let isColor = $ref(false)
+
+const changeSwitch = () => {
+  isColor = !isColor
+}
+watch(
+  () => isColor,
+  () => {
+    if (process.client) localStorage.setItem('isColor', String(isColor))
+  }
+)
+onMounted(() => {
+  if (process.client) isColor = JSON.parse(localStorage.getItem('isColor'))
+})
 </script>
 
 <template>
@@ -75,7 +89,12 @@ const linkList = ref(developADocument)
             v-for="(b, i) in blogNav[0].children"
             :key="`blogNavItem-${b._path}-${i}`"
           >
-            <div class="px-7 py-5 rounded-lg border-2 border-emerald-100">
+            <div
+              class="px-7 py-5 rounded-lg border-2 border-emerald-100"
+              :style="{
+                borderColor: isColor ? '#AFEEEE' : '#B0C4DE'
+              }"
+            >
               <h2 class="text-lg font-semibold rainbow-text">
                 {{ b.title }}
               </h2>
@@ -110,9 +129,17 @@ const linkList = ref(developADocument)
       </section>
       <section class="lg:px-[15%] px-[5%] lg:pt-20 pt-14">
         <p
-          class="text-center uppercase font-medium tracking-wider mb-10 text-gray-500"
+          class="flex items-center justify-center uppercase font-medium tracking-wider mb-10 text-gray-500"
         >
-          Quick Navigation
+          <span class="mr-2">RTX</span>
+          <span>OFF</span>
+          <input
+            type="checkbox"
+            @change="changeSwitch"
+            class="toggle toggle-accent ml-2 mr-2"
+            :checked="isColor"
+          />
+          <span>NO</span>
         </p>
         <div class="grid grid-cols-3 lg:grid-cols-10 gap-2">
           <div
@@ -121,9 +148,14 @@ const linkList = ref(developADocument)
             class="flex items-center"
           >
             <Icon class="h-5 w-5" :icon="item.icon"></Icon>
-            <a class="dark:text-white ml-1 link link-hover" :href="item.href">{{
-              item.text
-            }}</a>
+            <a
+              class="dark:text-white ml-1 link link-hover"
+              :style="{
+                color: isColor ? item.color : isDark ? '#fff' : '#000'
+              }"
+              :href="item.href"
+              >{{ item.text }}</a
+            >
           </div>
         </div>
       </section>
