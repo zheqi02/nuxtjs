@@ -43,7 +43,7 @@ useHead({
 <template>
   <div>
     <main>
-      <section class="lg:px-[15%] px-[5%] pt-20 dark:bg-black">
+      <section class="lg:px-[15%] px-[5%] pt-20 dark:bg-black pb-5">
         <h1
           class="lg:text-5xl text-2xl leading-normal font-semibold text-center"
         >
@@ -54,7 +54,6 @@ useHead({
         >
           Latest prevalent Trends
         </h1>
-
         <div class="lg:mt-20 mt-10">
           <h1 class="dark:text-green-50 lg:text-lg font-medium mb-5">
             Filter Category
