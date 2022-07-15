@@ -120,7 +120,7 @@ const linkList = ref(developADocument)
             :key="item.text"
             class="flex items-center"
           >
-            <Icon class="text-lg" :icon="item.icon"></Icon>
+            <Icon class="h-5 w-5" :icon="item.icon"></Icon>
             <a class="ml-1 link link-hover" :href="item.href">{{
               item.text
             }}</a>
