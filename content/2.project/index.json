@@ -1,56 +1,56 @@
 [
   {
     "id": 1,
-    "title": "后台管理系统",
+    "title": "后台管理系统 ",
     "description": "仿黑马简易后台管理系统，除了大量的增删改查基本没什么难点，可能就一个外面定义一个ref，在if为true的时候在change函数里面调用nextTick，树型拖拽换位，其他的没什么基本重复没什么技术含量，我写的第一个项目",
     "category": "small project",
-    "image": "https://picsum.photos/500/500",
-    "rating": { "rate": 2, "star": 0 },
+    "image": "https://picsum.photos/id/201/500/500.webp",
+    "rating": { "rate": 2.2, "star": 0 },
     "github": "https://github.com/zhe-qi/peoject-vue"
   },
   {
     "id": 2,
-    "title": "WD 2TB Elements Portable External Hard Drive - USB 3.0 ",
-    "price": 64,
-    "description": "USB 3.0 and USB 2.0 Compatibility Fast data transfers Improve PC Performance High Capacity; Compatibility Formatted NTFS for Windows 10, Windows 8.1, Windows 7; Reformatting may be required for other operating systems; Compatibility may vary depending on user’s hardware configuration and operating system",
-    "category": "electronics",
-    "image": "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg",
-    "rating": { "rate": 3.3, "count": 203 }
+    "title": "template-vue3-vite-ts-unocss ",
+    "description": "一个已经初始化完成，但是还需要安装依赖之后把tsconfig的extends定位过去并且把es2016改成ESNext或者ES2021以上才可以使用flatMap等新特性，然后husky得删掉重新install并且执行一条指令，指令在script里面有，先执行husky install对应的指令之后再执行下一个即可彻底初始化完成的一个vue3 vite ts unocss模板",
+    "category": "template series",
+    "image": "https://picsum.photos/id/200/500/500.webp",
+    "rating": { "rate": 3.3, "star": 203 },
+    "github": "https://github.com/zhe-qi/template-vue3-vite-ts-unocss"
   },
   {
     "id": 3,
     "title": "SanDisk SSD PLUS 1TB Internal SSD - SATA III 6 Gb/s",
-    "price": 109,
     "description": "Easy upgrade for faster boot up, shutdown, application load and response (As compared to 5400 RPM SATA 2.5” hard drive; Based on published specifications and internal benchmarking tests using PCMark vantage scores) Boosts burst write performance, making it ideal for typical PC workloads The perfect balance of performance and reliability Read/write speeds of up to 535MB/s/450MB/s (Based on internal testing; Performance may vary depending upon drive capacity, host device, OS and application.)",
     "category": "electronics",
     "image": "https://fakestoreapi.com/img/61U7T1koQqL._AC_SX679_.jpg",
-    "rating": { "rate": 2.9, "count": 470 }
+    "rating": { "rate": 2.9, "star": 470 },
+    "github": "https://github.com/"
   },
   {
     "id": 4,
     "title": "Silicon Power 256GB SSD 3D NAND A55 SLC Cache Performance Boost SATA III 2.5",
-    "price": 109,
     "description": "3D NAND flash are applied to deliver high transfer speeds Remarkable transfer speeds that enable faster bootup and improved overall system performance. The advanced SLC Cache Technology allows performance boost and longer lifespan 7mm slim design suitable for Ultrabooks and Ultra-slim notebooks. Supports TRIM command, Garbage Collection technology, RAID, and ECC (Error Checking & Correction) to provide the optimized performance and enhanced reliability.",
     "category": "electronics",
     "image": "https://fakestoreapi.com/img/71kWymZ+c+L._AC_SX679_.jpg",
-    "rating": { "rate": 4.8, "count": 319 }
+    "rating": { "rate": 4.8, "star": 319 },
+    "github": "https://github.com/"
   },
   {
     "id": 5,
     "title": "WD 4TB Gaming Drive Works with Playstation 4 Portable External Hard Drive",
-    "price": 114,
     "description": "Expand your PS4 gaming experience, Play anywhere Fast and easy, setup Sleek design with high capacity, 3-year manufacturer's limited warranty",
     "category": "electronics",
     "image": "https://fakestoreapi.com/img/61mtL65D4cL._AC_SX679_.jpg",
-    "rating": { "rate": 4.8, "count": 400 }
+    "rating": { "rate": 4.8, "star": 400 },
+    "github": "https://github.com/"
   },
   {
     "id": 6,
     "title": "Acer SB220Q bi 21.5 inches Full HD (1920 x 1080) IPS Ultra-Thin",
-    "price": 599,
     "description": "21. 5 inches Full HD (1920 x 1080) widescreen IPS display And Radeon free Sync technology. No compatibility for VESA Mount Refresh Rate: 75Hz - Using HDMI port Zero-frame design | ultra-thin | 4ms response time | IPS panel Aspect ratio - 16: 9. Color Supported - 16. 7 million colors. Brightness - 250 nit Tilt angle -5 degree to 15 degree. Horizontal viewing angle-178 degree. Vertical viewing angle-178 degree 75 hertz",
     "category": "electronics",
     "image": "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg",
-    "rating": { "rate": 2.9, "count": 250 }
+    "rating": { "rate": 2.9, "star": 250 },
+    "github": "https://github.com/"
   }
 ]
