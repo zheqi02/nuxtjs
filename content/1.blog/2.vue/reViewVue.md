@@ -1,3 +1,7 @@
+---
+title: vue review
+tags: vue review, vue
+---
 [面向有基础且快速复习的作用，着重容易忘、重要、细节知识点]{.text-green-400}
 
 #### 模板语法

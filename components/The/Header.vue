@@ -28,19 +28,13 @@ useFocus(target, { initialValue: true })
 
 let value = $ref<string>('')
 
-interface Result {
-  path: string
-  id: string
-  res: string[]
-}
-
 interface ResultData {
   path: string
   text: string
 }
 
 let isSearch = $ref(true)
-let searchList: Result[] = $ref([])
+let searchList = $ref<ResultData[]>([])
 
 const closeSearch = () => {
   setTimeout(() => {
@@ -49,53 +43,41 @@ const closeSearch = () => {
 }
 
 const searchStart = async () => {
-  const { data } = await useAsyncData('blog', () => {
-    return queryContent('blog').find()
-  })
-  const blog = toRaw(data.value)
-  const result: Result[] = []
-  blog.forEach(item => {
-    let path = item?._path || '/'
-    let nowId = ''
-    item.body?.children.forEach((e: any) => {
-      if (e.props?.id) {
-        nowId = e.props.id
-      }
-      if (e?.children) {
-        const searchData = (arr: Record<any, any>[]) => {
-          arr.forEach(each => {
-            if (each?.children) {
-              searchData(each.children)
-            } else {
-              if (each?.value && each.value.includes(value)) {
-                result.push({
-                  path,
-                  id: nowId,
-                  res: [each.value]
-                })
-              }
-            }
-          })
-        }
-        searchData(e.children)
-      }
+  if (value === '') {
+    searchList = []
+    return
+  }
+
+  const blog = await queryContent('blog')
+    .where({
+      tags: { $contains: value }
     })
-  })
+    .find()
+
+  const result: ResultData[] = []
+  for (let i = 0, len = blog.length; i < len; i++) {
+    const path = blog[i]?._path,
+      text = blog[i]?.title
+
+    result.push({
+      path,
+      text
+    })
+  }
   searchList = result
 }
 
 const filteredList = computed(() => {
   const arr: ResultData[] = []
   searchList.forEach(item => {
-    item.res.forEach(e => {
-      arr.push({
-        path: `/blog/${item.path}#${item.id}`,
-        text: e
-      })
+    arr.push({
+      path: `/blog${item.path}`,
+      text: item.text
     })
   })
   return arr
 })
+
 const { list, containerProps, wrapperProps } = useVirtualList(filteredList, {
   itemHeight: 22
 })
@@ -170,6 +152,7 @@ const { list, containerProps, wrapperProps } = useVirtualList(filteredList, {
             class="dark:bg-slate-700 dark:text-white input input-bordered input-info w-full max-w-xs"
           />
         </div>
+        <!-- 搜索列表 TODO -->
         <div v-if="!isSearch" class="relative mt-1 w-full">
           <div
             v-bind="(containerProps as any)"
