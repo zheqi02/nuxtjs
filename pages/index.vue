@@ -121,7 +121,7 @@ const linkList = ref(developADocument)
             class="flex items-center"
           >
             <Icon class="h-5 w-5" :icon="item.icon"></Icon>
-            <a class="ml-1 link link-hover" :href="item.href">{{
+            <a class="dark:text-white ml-1 link link-hover" :href="item.href">{{
               item.text
             }}</a>
           </div>

@@ -215,5 +215,10 @@ export const developADocument: LinkList[] = [
     href: 'https://liiked.github.io/VS-Code-Extension-Doc-ZH/#/',
     text: 'VSPlugin',
     icon: 'akar-icons:vscode-fill'
+  },
+  {
+    href: 'https://vercel.com/dashboard',
+    text: 'Vercel',
+    icon: 'logos:vercel-icon'
   }
 ]

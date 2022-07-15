@@ -131,7 +131,6 @@ const { list, containerProps, wrapperProps } = useVirtualList(filteredList, {
         ></div>
       </div>
       <div
-        title="ColorMode"
         class="inline-block cursor-pointer hover:text-primary group"
       >
         <div class="flex items-center space-x-2">
