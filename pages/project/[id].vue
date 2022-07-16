@@ -7,9 +7,11 @@ const { data: item } = await useAsyncData('item-' + id, async () => {
   return q.body.find(p => p.id == parseInt(id as string))
 })
 
-// function used to format the price
-const formatPrice = () =>
-  new Intl.DateTimeFormat('zh-CN').format(new Date(Date.UTC(2022, 4, 1)))
+const time = (item.value.time as string).split('-').map(e => Number(e))
+const formatData = () =>
+  new Intl.DateTimeFormat('zh-CN').format(
+    new Date(Date.UTC(time[0], time[1], time[2]))
+  )
 
 // Set header
 useHead({
@@ -20,11 +22,13 @@ useHead({
 <template>
   <div>
     <main>
-      <section class="dark:bg-black lg:px-[10%] pt-10 px-[5%] pb-16">
+      <section
+        class="dark:bg-black dark:text-yellow-50 lg:px-[10%] pt-10 px-[5%] pb-16"
+      >
         <div class="flex relative items-start flex-col lg:flex-row gap-7">
           <div class="flex-1">
             <img
-              class="w-full object-contain h-[90%]"
+              class="w-full object-contain h-[90%] dark:opacity-40"
               :src="item.image"
               :alt="item.title"
             />
@@ -53,14 +57,17 @@ useHead({
               star: <span class="text-red-400">{{ item.rating.star }}</span>
             </div>
             <p class="lg:text-3xl text-2xl mt-8">
-              {{ formatPrice() }}
+              {{ formatData() }}
             </p>
             <p
               class="mt-5 text-gray-500 whitespace-pre-wrap text-sm lg:text-base"
               v-html="item.description"
             ></p>
             <div class="mt-12 flex items-center space-x-5">
-              <NuxtLink :href="item.github" class="rainbow-bg text-white text-center py-4 rounded-md w-full">
+              <NuxtLink
+                :href="item.github"
+                class="dark:opacity-40 rainbow-bg text-white text-center py-4 rounded-md w-full"
+              >
                 To GitHub
               </NuxtLink>
               <button>

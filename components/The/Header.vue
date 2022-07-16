@@ -96,7 +96,7 @@ const { list, containerProps, wrapperProps } = useVirtualList(filteredList, {
 
 <template>
   <header
-    class="fixed z-10 backdrop-blur-sm w-screen dark:bg-black border-b-2 flex items-center justify-between h-20 px-[5%] lg:px-[15%]"
+    class="fixed z-10 backdrop-blur-sm w-screen border-b-2 flex items-center justify-between h-20 px-[5%] lg:px-[15%]"
   >
     <NuxtLink to="/" class="font-bold text-2xl lg:text-4xl">
       <div class="rainbow-text">zhe-qi</div>

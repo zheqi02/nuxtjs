@@ -39,7 +39,7 @@ const searchBing = () => {
 </script>
 
 <template>
-  <div class="dark:bg-black min-h-screen">
+  <div class="dark:bg-zinc-800 min-h-screen">
     <!-- 语义化标签更有利于爬虫的抓取做seo优化 -->
     <main>
       <!-- titles -->
@@ -93,8 +93,6 @@ const searchBing = () => {
           </div>
         </h1>
       </section>
-      <!-- SE -->
-
       <!-- blogs -->
       <section class="lg:px-[15%] px-[5%] lg:pt-10 pt-14">
         <div class="flex justify-center items-center">
@@ -103,7 +101,7 @@ const searchBing = () => {
             @keydown.enter="searchBing"
             type="text"
             placeholder="Click Here Search To Bing And Enter"
-            class="input input-ghost w-full max-w-xs text-center font-medium tracking-wider mb-10 text-gray-500"
+            class="input input-ghost dark:focus:bg-zinc-700 w-full max-w-xs text-center font-medium tracking-wider mb-10 text-gray-500"
           />
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">

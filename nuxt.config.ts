@@ -3,11 +3,11 @@ import { defineNuxtConfig } from 'nuxt'
 // https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
 export default defineNuxtConfig({
   modules: [
+    '@nuxtjs/strapi',
     '@nuxt/content',
     '@nuxtjs/tailwindcss',
     '@vueuse/nuxt',
-    '@pinia/nuxt',
-    "@nuxtjs/strapi"
+    '@pinia/nuxt'
   ],
   content: {
     markdown: {

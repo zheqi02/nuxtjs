@@ -3,9 +3,11 @@ const { data: items } = await useAsyncData('items', () => {
   return queryContent('project').find()
 })
 
+const { data: user } = await useFetch('/api/user')
+
 const categories = items.value[0].body.reduce(
-  (acc: any[], product: { category: any }) => {
-    if (!acc.includes(product.category)) acc.push(product.category)
+  (acc: any[], ele: { category: any }) => {
+    if (!acc.includes(ele.category)) acc.push(ele.category)
     return acc
   },
   []
@@ -24,14 +26,18 @@ onMounted(
     (activeCategory.value = useRoute().query.category)
 )
 
-const formatPrice = () =>
-  new Intl.DateTimeFormat('zh-CN').format(new Date(Date.UTC(2022, 4, 1)))
+const formatData = (time: string) => {
+  const res = time.split('-').map(e => Number(e))
+  return new Intl.DateTimeFormat('zh-CN').format(
+    new Date(Date.UTC(res[0], res[1], res[2]))
+  )
+}
 
 const filteritems = computed(() => {
   if (!activeCategory.value) return items.value[0].body
   return items.value[0].body.filter(
-    (product: { category: string }) =>
-      product.category.toLowerCase() == activeCategory.value.toLowerCase()
+    (ele: { category: string }) =>
+      ele.category.toLowerCase() == activeCategory.value.toLowerCase()
   )
 })
 
@@ -43,7 +49,7 @@ useHead({
 <template>
   <div>
     <main>
-      <section class="lg:px-[15%] px-[5%] dark:bg-black pb-5 pt-10">
+      <section class="lg:px-[15%] px-[5%] dark:bg-zinc-800 pb-5 pt-10">
         <!-- title1 -->
         <h1
           class="lg:text-5xl text-2xl leading-normal font-semibold text-center"
@@ -68,8 +74,8 @@ useHead({
               Clear &times;
             </button>
           </h1>
-          <!-- blogs -->
-          <div class="flex flex-wrap l items-center lg:space-x-5 mb-5">
+          <!-- tabs -->
+          <div class="flex flex-wrap items-center lg:space-x-5 mb-5">
             <template v-for="(c, i) in categories" :key="`categroy-${i}`">
               <button
                 @click="setCategory(c)"
@@ -83,13 +89,15 @@ useHead({
               </button>
             </template>
           </div>
+          <!-- blogs -->
           <div class="grid grid-cols-1 lg:grid-cols-4 gap-10 lg:mt-20">
             <template
               v-for="(p, i) in filteritems"
-              :key="`product-${i}-${p.id}`"
+              :key="`ele-${i}-${p.id}`"
             >
-              <Recommend
-                class="dark:bg-slate-500 lg:col-span-2 rounded bg-slate-900 text-white p-10"
+              <Introduce
+                class="lg:col-span-2 rounded"
+                :user="user"
                 v-if="i === 0 && !activeCategory"
               />
               <NuxtLink
@@ -100,12 +108,12 @@ useHead({
                 <img
                   :src="p.image"
                   :alt="p.title"
-                  class="w-full h-[300px] object-contain object-center"
+                  class="dark:opacity-40 w-full h-[300px] object-contain object-center rounded-lg"
                 />
                 <div class="p-3 dark:text-white">
                   <h2 class="text-xl">{{ p.title }}</h2>
                   <p class="font-bold text-sm mt-2">
-                    {{ formatPrice() }}
+                    {{ formatData(p.time) }}
                   </p>
                 </div>
               </NuxtLink>

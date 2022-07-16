@@ -1,5 +1,5 @@
 <template>
-  <div class="relative">
+  <div class="relative dark:bg-zinc-800">
     <div
       class="absolute -z-10 inset-0 bottom-10 bg-bottom bg-no-repeat bg-slate-50 dark:bg-[#0B1120] index_beams__3fKa4"
     >

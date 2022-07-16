@@ -6,7 +6,8 @@
     "blog",
     "vue3",
     "nuxt3",
-    "unocss"
+    "tailwindcss",
+    "content2"
   ],
   "license": "MIT",
   "author": "zhe-qi",

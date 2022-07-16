@@ -2,38 +2,42 @@
   {
     "id": 1,
     "title": "后台管理系统 ",
-    "description": "仿黑马简易后台管理系统，除了大量的增删改查基本没什么难点，可能就一个外面定义一个ref，在if为true的时候在change函数里面调用nextTick，树型拖拽换位，其他的没什么基本重复没什么技术含量，我写的第一个项目",
+    "description": "仿黑马简易后台管理系统，除了大量的增删改查基本没什么难点，可能就一个外面定义一个ref，在if为true的时候在change函数里面调用nextTick，树型拖拽换位，其他的没什么基本重复没什么技术含量，我写的第一个项目，这个项目原先的axios封装不知道为什么没用了，用封装的axios请求显示跨域，配置了代理，之前还有用，可能版本不对吧，所以拿fetch基本重构了一遍，是使用的useFetch vueuse提供的，没有封装直接调用的，所以很麻烦，写一半了才想起来要封装，后来还是否决了",
     "category": "small project",
-    "image": "https://picsum.photos/id/201/500/500.webp",
+    "image": "https://picsum.photos/id/167/500/500.webp",
     "rating": { "rate": 2.2, "star": 0 },
-    "github": "https://github.com/zhe-qi/peoject-vue"
+    "github": "https://github.com/zhe-qi/peoject-vue",
+    "time": "2020-04-01"
   },
   {
     "id": 2,
     "title": "template-vue3-vite-ts-unocss ",
     "description": "一个已经初始化完成，但是还需要安装依赖之后把tsconfig的extends定位过去并且把es2016改成ESNext或者ES2021以上才可以使用flatMap等新特性，然后husky得删掉重新install并且执行一条指令，指令在script里面有，先执行husky install对应的指令之后再执行下一个即可彻底初始化完成的一个vue3 vite ts unocss模板",
     "category": "template series",
-    "image": "https://picsum.photos/id/200/500/500.webp",
-    "rating": { "rate": 3.3, "star": 203 },
-    "github": "https://github.com/zhe-qi/template-vue3-vite-ts-unocss"
+    "image": "https://picsum.photos/id/166/500/500.webp",
+    "rating": { "rate": 1, "star": 0 },
+    "github": "https://github.com/zhe-qi/template-vue3-vite-ts-unocss",
+    "time": "2020-05-10"
   },
   {
     "id": 3,
-    "title": "SanDisk SSD PLUS 1TB Internal SSD - SATA III 6 Gb/s",
-    "description": "Easy upgrade for faster boot up, shutdown, application load and response (As compared to 5400 RPM SATA 2.5” hard drive; Based on published specifications and internal benchmarking tests using PCMark vantage scores) Boosts burst write performance, making it ideal for typical PC workloads The perfect balance of performance and reliability Read/write speeds of up to 535MB/s/450MB/s (Based on internal testing; Performance may vary depending upon drive capacity, host device, OS and application.)",
-    "category": "electronics",
-    "image": "https://fakestoreapi.com/img/61U7T1koQqL._AC_SX679_.jpg",
-    "rating": { "rate": 2.9, "star": 470 },
-    "github": "https://github.com/"
+    "title": "netease-cloud-ts-vue3",
+    "description": "仿网易云客户端，以后可能会写一个桌面应用使用tauri，这个不是很完善，急于求成了，但是核心功能已经完成，搜索，播放，轮询，下一首，api的调用，歌词轮播等等等等，这个项目我这几天会重构掉",
+    "category": "small project",
+    "image": "https://picsum.photos/id/168/500/500.webp",
+    "rating": { "rate": 2, "star": 0 },
+    "github": "https://github.com/zhe-qi/netease-cloud-ts-vue3",
+    "time": "2020-04-11"
   },
   {
     "id": 4,
-    "title": "Silicon Power 256GB SSD 3D NAND A55 SLC Cache Performance Boost SATA III 2.5",
-    "description": "3D NAND flash are applied to deliver high transfer speeds Remarkable transfer speeds that enable faster bootup and improved overall system performance. The advanced SLC Cache Technology allows performance boost and longer lifespan 7mm slim design suitable for Ultrabooks and Ultra-slim notebooks. Supports TRIM command, Garbage Collection technology, RAID, and ECC (Error Checking & Correction) to provide the optimized performance and enhanced reliability.",
-    "category": "electronics",
-    "image": "https://fakestoreapi.com/img/71kWymZ+c+L._AC_SX679_.jpg",
-    "rating": { "rate": 4.8, "star": 319 },
-    "github": "https://github.com/"
+    "title": "nuxtjs",
+    "description": "这是这个博客的所有代码，也是学nuxt的第一个项目，随着nuxt3技术的前进会逐渐完善的，现在的版本是rc5刚出3天，很多地方也只能互相学习，毕竟不是谁生来就会，文档也不是那么容易理解，要学习的东西还有很多，加油！",
+    "category": "small project",
+    "image": "https://picsum.photos/id/169/500/500.webp",
+    "rating": { "rate": 2, "star": 0 },
+    "github": "https://github.com/zhe-qi/nuxtjs",
+    "time": "2020-06-16"
   },
   {
     "id": 5,
@@ -42,7 +46,8 @@
     "category": "electronics",
     "image": "https://fakestoreapi.com/img/61mtL65D4cL._AC_SX679_.jpg",
     "rating": { "rate": 4.8, "star": 400 },
-    "github": "https://github.com/"
+    "github": "https://github.com/",
+    "time": "2020-05-01"
   },
   {
     "id": 6,
@@ -51,6 +56,7 @@
     "category": "electronics",
     "image": "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg",
     "rating": { "rate": 2.9, "star": 250 },
-    "github": "https://github.com/"
+    "github": "https://github.com/",
+    "time": "2020-05-01"
   }
 ]
