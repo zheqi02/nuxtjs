@@ -3,7 +3,6 @@ import { defineNuxtConfig } from 'nuxt'
 // https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
 export default defineNuxtConfig({
   modules: [
-    '@nuxtjs/strapi',
     '@nuxt/content',
     '@nuxtjs/tailwindcss',
     '@vueuse/nuxt',
@@ -29,11 +28,5 @@ export default defineNuxtConfig({
   },
   typescript: {
     shim: false
-  },
-  strapi: {
-    url: process.env.STRAPI_URL || 'http://localhost:1337',
-    prefix: '/api',
-    version: 'v4',
-    cookie: {}
   }
 })
