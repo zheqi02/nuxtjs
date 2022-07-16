@@ -22,7 +22,9 @@
           <p class="py-4">
             首先跳转问题，有的时候跳转不了或者反应缓慢，不是我逻辑应该是
             <span class="bg-red-200 rounded text-white">@nuxt/content</span>
-            await查询数据返回的问题
+            await查询数据返回的问题,
+            在微信浏览器的代码块背景丢失问题，这个背景是content提供的所以如果微信浏览器的
+            话就开暗色看代码块
           </p>
         </label>
       </label>

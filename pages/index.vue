@@ -43,7 +43,7 @@ const searchBing = () => {
     <!-- 语义化标签更有利于爬虫的抓取做seo优化 -->
     <main>
       <!-- titles -->
-      <section class="lg:px-[15%] px-[5%]">
+      <section class="lg:px-[15%] px-[5%] pt-10">
         <!-- title1 -->
         <h1
           class="dark:text-white lg:text-5xl text-2xl leading-normal font-semibold text-center"

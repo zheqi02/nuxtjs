@@ -43,7 +43,7 @@ useHead({
 <template>
   <div>
     <main>
-      <section class="lg:px-[15%] px-[5%] dark:bg-black pb-5">
+      <section class="lg:px-[15%] px-[5%] dark:bg-black pb-5 pt-10">
         <!-- title1 -->
         <h1
           class="lg:text-5xl text-2xl leading-normal font-semibold text-center"
