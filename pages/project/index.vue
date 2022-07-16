@@ -43,17 +43,20 @@ useHead({
 <template>
   <div>
     <main>
-      <section class="lg:px-[15%] px-[5%] pt-20 dark:bg-black pb-5">
+      <section class="lg:px-[15%] px-[5%] dark:bg-black pb-5">
+        <!-- title1 -->
         <h1
           class="lg:text-5xl text-2xl leading-normal font-semibold text-center"
         >
           Stay Up To Date With The
         </h1>
+        <!-- title2 -->
         <h1
           class="lg:text-6xl text-4xl text-center leading-normal font-bold rainbow-text"
         >
           Latest prevalent Trends
         </h1>
+        <!-- body -->
         <div class="lg:mt-20 mt-10">
           <h1 class="dark:text-green-50 lg:text-lg font-medium mb-5">
             Filter Category
@@ -65,6 +68,7 @@ useHead({
               Clear &times;
             </button>
           </h1>
+          <!-- blogs -->
           <div class="flex flex-wrap l items-center lg:space-x-5 mb-5">
             <template v-for="(c, i) in categories" :key="`categroy-${i}`">
               <button
@@ -85,20 +89,20 @@ useHead({
               :key="`product-${i}-${p.id}`"
             >
               <Recommend
-                class="dark:bg-slate-800 lg:col-span-2 rounded bg-slate-900 text-white p-10"
+                class="dark:bg-slate-500 lg:col-span-2 rounded bg-slate-900 text-white p-10"
                 v-if="i === 0 && !activeCategory"
               />
               <NuxtLink
                 :to="`/project/${p.id}`"
                 :class="{ 'lg:col-start-3': i === 0 && !activeCategory }"
-                class="rounded-md bg-white hover:shadow-lg transition-all hover:cursor-pointer"
+                class="rounded-md hover:shadow-lg transition-all hover:cursor-pointer"
               >
                 <img
                   :src="p.image"
                   :alt="p.title"
                   class="w-full h-[300px] object-contain object-center"
                 />
-                <div class="p-3">
+                <div class="p-3 dark:text-white">
                   <h2 class="text-xl">{{ p.title }}</h2>
                   <p class="font-bold text-sm mt-2">
                     {{ formatPrice() }}

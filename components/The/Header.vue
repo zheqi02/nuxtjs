@@ -9,7 +9,7 @@ const links = [
     text: 'Home'
   },
   {
-    icon: 'line-md:list-3-twotone',
+    icon: 'ph:list-bullets-bold',
     link: '/project',
     text: 'Project'
   },
@@ -34,7 +34,6 @@ interface ResultData {
 }
 
 let isSearch = $ref(true)
-let searchList = $ref<ResultData[]>([])
 
 const closeSearch = () => {
   setTimeout(() => {
@@ -42,12 +41,7 @@ const closeSearch = () => {
   }, 100)
 }
 
-const searchStart = async () => {
-  if (value === '') {
-    searchList = []
-    return
-  }
-
+const getSearchData = async () => {
   const blog = await queryContent('blog')
     .where({
       tags: { $contains: value }
@@ -64,7 +58,24 @@ const searchStart = async () => {
       text
     })
   }
-  searchList = result
+  return result
+}
+
+let searchList = $ref<ResultData[]>([])
+watch(
+  () => value,
+  async () => {
+    if (value.length < 1) {
+      searchList = []
+      return
+    }
+    searchList = await getSearchData()
+  },
+  { immediate: true }
+)
+
+const searchStart = async () => {
+  if (value === '') return
 }
 
 const filteredList = computed(() => {
@@ -85,7 +96,7 @@ const { list, containerProps, wrapperProps } = useVirtualList(filteredList, {
 
 <template>
   <header
-    class="dark:bg-black border-b-2 flex items-center justify-between h-20 px-[5%] lg:px-[15%]"
+    class="fixed z-10 backdrop-blur-sm w-screen dark:bg-black border-b-2 flex items-center justify-between h-20 px-[5%] lg:px-[15%]"
   >
     <NuxtLink to="/" class="font-bold text-2xl lg:text-4xl">
       <div class="rainbow-text">zhe-qi</div>
@@ -159,7 +170,7 @@ const { list, containerProps, wrapperProps } = useVirtualList(filteredList, {
               <NuxtLink
                 v-for="item in list"
                 :key="item.index"
-                class="block h-6 mt-[1px] w-full border truncate hover:text-pink-400 hover:bg-sky-100"
+                class="dark:bg-slate-200 dark:hover:bg-slate-600 block h-6 mt-[1px] w-full border truncate hover:text-pink-400 hover:bg-sky-100"
                 :href="item.data.path"
               >
                 {{ item.data.text }}

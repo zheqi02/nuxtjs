@@ -12,7 +12,7 @@
       ></div>
     </div>
     <TheHeader />
-    <main>
+    <main class="pt-24">
       <slot />
     </main>
     <TheFooter />
