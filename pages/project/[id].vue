@@ -4,7 +4,7 @@ const id = useRoute().params.id
 
 const { data: item } = await useAsyncData('item-' + id, async () => {
   const q = await queryContent('project').only('body').findOne()
-  return q.body.find(p => p.id == parseInt(id as string))
+  return q.body.find((p: { id: number; }) => p.id == parseInt(id as string))
 })
 
 const time = (item.value.time as string).split('-').map(e => Number(e))

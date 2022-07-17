@@ -118,7 +118,7 @@ const searchBing = () => {
               <h2 class="text-lg font-semibold rainbow-text">
                 {{ b.title }}
               </h2>
-              <!-- Loop over files inside the content dir -->
+              <!-- 列表 -->
               <ul
                 v-if="b.children"
                 class="list-disc list-inside mt-4 pl-2 space-y-3"
