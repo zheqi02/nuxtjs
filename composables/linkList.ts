@@ -81,13 +81,13 @@ export const developADocument: LinkList[] = [
   },
   {
     href: 'https://deno.com/deploy',
-    text: 'DenoDeploy',
+    text: 'Deploy',
     icon: 'logos:deno',
     color: '#00CED1'
   },
   {
     href: 'https://fresh.deno.dev/',
-    text: 'DenoFresh',
+    text: 'Fresh',
     icon: 'logos:fresh',
     color: '#00FF7F'
   },

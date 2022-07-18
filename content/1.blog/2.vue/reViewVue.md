@@ -182,7 +182,7 @@ const greet = event => {
 <input v-model="text">
 ```
 
-还可用于 <textarea> 和 <select>元素
+还可用于 &lt;textarea&gt; 和 &lt;select&gt;元素
 
 修饰符
 

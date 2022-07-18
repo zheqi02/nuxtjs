@@ -16,7 +16,9 @@ module.exports = {
     extend: {
       animation: {
         'text-pop-up-top':
-          'text-pop-up-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940)   both'
+          'text-pop-up-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940)   both',
+        'shadow-drop-center':
+          'shadow-drop-center 1s  cubic-bezier(0.250, 0.460, 0.450, 0.940)   both'
       },
       keyframes: {
         'text-pop-up-top': {
@@ -30,6 +32,14 @@ module.exports = {
             'transform-origin': '50% 50%',
             'text-shadow':
               '0 1px 0 #ccc, 0 2px 0 #ccc, 0 3px 0 #ccc, 0 4px 0 #ccc, 0 5px 0 #ccc, 0 6px 0 #ccc, 0 7px 0 #ccc, 0 8px 0 #ccc, 0 9px 0 #ccc, 0 50px 30px rgba(0, 0, 0, .3)'
+          }
+        },
+        'shadow-drop-center': {
+          '0%': {
+            'box-shadow': '0 0 0 0 transparent'
+          },
+          to: {
+            'box-shadow': '0 0 20px 0 rgba(0, 0, 0, .35)'
           }
         }
       },

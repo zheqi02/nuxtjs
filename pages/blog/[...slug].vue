@@ -1,10 +1,13 @@
 <script setup lang="ts">
+// 获取文章路径并把逗号替换成/
 const slug = useRoute().params.slug.toString().replace(/,/g, '/')
 
+// 获取文章内容
 const { data: blog } = await useAsyncData(slug, () => {
   return queryContent(slug).findOne()
 })
 
+// 获取目录列表
 const toc = computed(() => {
   if (!blog.value) return []
   const items = blog.value.excerpt?.children
@@ -24,14 +27,15 @@ const toc = computed(() => {
   )
   return toc
 })
+
 useHead({
   title: `${blog.value.title}`
 })
 </script>
 
 <template>
-  <div>
-    <main>
+    <main class="pt-16">
+      <!-- 文章主体 -->
       <article
         class="dark:text-white dark:bg-zinc-800 max-w-max overflow-x-hidden lg:pt-20 pt-10 relative flex items-start lg:space-x-10 px-[5%] lg:px-[10%]"
       >
@@ -57,6 +61,7 @@ useHead({
           </ul>
         </div>
         <ClientOnly>
+          <!-- 渲染文章内容 -->
           <ContentRenderer
             class="dark:text-white prose lg:prose-base prose-sm prose-slate pr-7 blog-link w-screen lg:max-w-none"
             :value="blog"
@@ -68,7 +73,6 @@ useHead({
         </ClientOnly>
       </article>
     </main>
-  </div>
 </template>
 
 <style scoped>

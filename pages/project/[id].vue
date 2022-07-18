@@ -4,7 +4,7 @@ const id = useRoute().params.id
 
 const { data: item } = await useAsyncData('item-' + id, async () => {
   const q = await queryContent('project').only('body').findOne()
-  return q.body.find((p: { id: number; }) => p.id == parseInt(id as string))
+  return q.body.find((p: { id: number }) => p.id == parseInt(id as string))
 })
 
 const time = (item.value.time as string).split('-').map(e => Number(e))
@@ -21,25 +21,25 @@ useHead({
 
 <template>
   <div>
-    <main>
-      <section
-        class="dark:bg-black dark:text-yellow-50 lg:px-[10%] pt-10 px-[5%] pb-16"
-      >
-        <div class="flex relative items-start flex-col lg:flex-row gap-7">
+    <main
+      class="dark:bg-black pt-16 dark:text-yellow-50 h-[100vh] overflow-hidden"
+    >
+      <section class="lg:px-[10%] pt-10 px-[5%] pb-16">
+        <div class="flex relative items-start flex-col lg:flex-row lg:gap-7">
           <div class="flex-1">
             <img
-              class="w-full object-contain h-[90%] dark:opacity-40"
+              class="object-contain h-[20vh] lg:h-[70vh] dark:brightness-50"
               :src="item.image"
               :alt="item.title"
             />
           </div>
           <div class="flex-1">
             <p
-              class="capitalize text-sm px-4 py-1 bg-gray-200 inline-block rounded text-gray-500"
+              class="capitalize dark:bg-zinc-600 dark:text-yellow-100 text-sm px-4 hidden py-1 bg-gray-200 lg:inline-block rounded text-gray-500"
             >
               {{ item.category }}
             </p>
-            <h1 class="font-bold lg:text-3xl text-2xl my-5 lg:my-6">
+            <h1 class="font-bold lg:text-3xl text-xl my-5 lg:my-6">
               {{ item.title }}
             </h1>
             <div class="flex items-center space-x-1">
@@ -53,20 +53,20 @@ useHead({
                 />
               </div>
             </div>
-            <div class="text-lg">
+            <div class="lg:text-lg text-sm">
               star: <span class="text-red-400">{{ item.rating.star }}</span>
             </div>
-            <p class="lg:text-3xl text-2xl mt-8">
+            <p class="lg:text-3xl text-sm lg:mt-8 mt-2">
               {{ formatData() }}
             </p>
             <p
-              class="mt-5 text-gray-500 whitespace-pre-wrap text-sm lg:text-base"
+              class="mt-5 text-gray-500 whitespace-pre-wrap text-xs lg:text-base"
               v-html="item.description"
             ></p>
-            <div class="mt-12 flex items-center space-x-5">
+            <div class="lg:mt-12 mt-2 flex items-center space-x-5">
               <NuxtLink
-                :href="item.github"
-                class="dark:opacity-40 rainbow-bg text-white text-center py-4 rounded-md w-full"
+                :to="item.github"
+                class="dark:brightness-50 rainbow-bg text-white text-center py-4 rounded-md w-full"
               >
                 To GitHub
               </NuxtLink>
