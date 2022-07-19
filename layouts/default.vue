@@ -1,7 +1,8 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+</script>
 
 <template>
-  <div class="scrollBar relative dark:bg-zinc-800">
+  <div class="scrollBar overflow-x-hidden relative dark:bg-zinc-800">
     <GoTop />
     <BG />
     <TheHeader />
@@ -11,6 +12,4 @@
   </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

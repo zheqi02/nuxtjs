@@ -74,8 +74,7 @@ const { list, containerProps, wrapperProps, scrollTo } = useVirtualList(
   }
 )
 const handleScrollTo = () => {
-  if(indexV >= 0)
-  scrollTo(indexV)
+  if (indexV >= 0) scrollTo(indexV)
 }
 
 interface Util {
@@ -89,23 +88,30 @@ interface Util {
 const utils: Util[] = [
   {
     id: '1',
-    url: 'https://tail-animista.vercel.app/play/basic/scale-up/scale-up-center',
-    img: 'https://api.ixiaowai.cn/api/api.php',
-    title: 'Tailanimista',
-    text: '这是一个Tailwindcss的动画生成工具'
+    url: 'https://vuetelescope.com/',
+    img: 'https://tva3.sinaimg.cn/large/0072Vf1pgy1fodqo0e8fzj31hc0xcqv5.jpg',
+    title: 'Vuetelescope',
+    text: '这是一个可以查看你vue技术栈的工具'
   },
   {
     id: '2',
     url: 'https://picsum.photos/',
-    img: 'https://picsum.photos/200/300',
+    img: 'https://tva1.sinaimg.cn/large/0072Vf1pgy1foxlnf6ksdj31kw0w0dzb.jpg',
     title: 'Picsum',
     text: '这是一个图片API生成工具'
+  },
+  {
+    id: '3',
+    url: 'https://tail-animista.vercel.app/play/basic/scale-up/scale-up-center',
+    img: 'https://api.ixiaowai.cn/api/api.php',
+    title: 'Tailanimista',
+    text: '这是一个Tailwindcss的动画生成工具'
   }
 ]
 </script>
 
 <template>
-  <div class="lg:px-[15%] px-[5%] w-screen overflow-x-hidden">
+  <div class="lg:px-[15%] px-[5%] w-screen">
     <main class="pt-[4.5rem] w-full">
       <!-- 头上三个大板块 -->
       <div
@@ -168,7 +174,7 @@ const utils: Util[] = [
       <!-- 文章列表 -->
       <section class="lg:pt-7 pt-2 w-full">
         <div class="flex justify-between h-[1000px] overflow-y-hidden w-full">
-          <div class="lg:w-[70%]  w-full h-full bg-zinc-50">
+          <div class="lg:w-[70%] w-full h-full bg-zinc-50">
             <div
               class="lg:flex border-b lg:justify-between lg:w-full w-screen py-2 bg-zinc-50"
             >
@@ -191,7 +197,12 @@ const utils: Util[] = [
                     v-model="search"
                   />
                   <input type="number" class="ml-2 w-[12%]" v-model="indexV" />
-                  <button class="ml-2 border text-center" @click="handleScrollTo">跳转</button>
+                  <button
+                    class="ml-2 border text-center"
+                    @click="handleScrollTo"
+                  >
+                    跳转
+                  </button>
                 </div>
               </div>
             </Transition>
@@ -218,8 +229,7 @@ const utils: Util[] = [
             >
               <h1 class="text-center text-xl font-bold">关于本站</h1>
               <p class="indent-8">
-                互相学习，成长，相关源代码可以在我的<span
-                  class="text-blue-400"
+                互相学习，成长，相关源代码可以在我的<span class="text-blue-400"
                   >github</span
                 >找到，如果您有什么好的建议或者想法可以添加我的个人微信
                 ，提出您宝贵的意见。也欢迎各位有志之士加入学习群，加我微信邀请您进群进行自律打卡，提供大量<span
@@ -228,8 +238,7 @@ const utils: Util[] = [
                 >主流学习资料。 更有大佬带您一起学习，当然群主是个<span
                   class="text-red-300"
                   >菜鸟</span
-                >，遇到更菜的也可以适当解答。
-                学习的话拜托可以给个友情链接或者提示来源，谢谢！
+                >，遇到更菜的也可以适当解答。 学习的话可以给个友情链接吗，谢谢！
               </p>
             </div>
             <div class="w-full bg-zinc-50 h-[1000px] p-2">
