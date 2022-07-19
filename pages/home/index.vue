@@ -13,10 +13,10 @@ interface Imgs {
 }
 
 const imgs: Imgs[] = [
-  {
-    url: 'https://api.qicaiyun.top/ercy/api.php',
-    title: '第一张'
-  },
+  // {
+  //   url: 'https://api.qicaiyun.top/ercy/api.php',
+  //   title: '第一张'
+  // },
   {
     url: 'https://api.ghser.com/random/pc.php',
     title: '第二张'
@@ -238,7 +238,7 @@ const utils: Util[] = [
                 >主流学习资料。 更有大佬带您一起学习，当然群主是个<span
                   class="text-red-300"
                   >菜鸟</span
-                >，遇到更菜的也可以适当解答。 学习的话可以给个友情链接吗，谢谢！
+                >，遇到更菜的也可以适当解答。
               </p>
             </div>
             <div class="w-full bg-zinc-50 h-[1000px] p-2">

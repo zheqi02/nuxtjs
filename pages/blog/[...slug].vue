@@ -10,7 +10,7 @@ const { data: blog } = await useAsyncData(slug, () => {
 // 获取目录列表
 const toc = computed(() => {
   if (!blog.value) return []
-  const items = blog.value.excerpt?.children
+  const items = blog.value?.excerpt?.children
   if (!items) return []
   const toc = []
   const tags = ['h2', 'h3', 'h4', 'h5', 'h6']
