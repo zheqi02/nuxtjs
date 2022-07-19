@@ -218,7 +218,7 @@ const utils: Util[] = [
             >
               <h1 class="text-center text-xl font-bold">关于本站</h1>
               <p class="indent-8">
-                互相学习，成长，这个网站遵守MIT开源协议,相关源代码可以在我的<span
+                互相学习，成长，相关源代码可以在我的<span
                   class="text-blue-400"
                   >github</span
                 >找到，如果您有什么好的建议或者想法可以添加我的个人微信
@@ -262,6 +262,7 @@ const utils: Util[] = [
         </div>
       </section>
     </main>
+    <TheFooter />
   </div>
 </template>
 

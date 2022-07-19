@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { User } from '~/types'
-import async from '../server/api/user';
+import async from '../server/api/user'
 
 const { user } = defineProps<{
   user: User
@@ -28,7 +28,9 @@ const { user } = defineProps<{
       🌠写这个网站的第<span class="text-orange-400">{{ 5 }}</span
       >天🌟(不连续)
       <br />
-      <NuxtLink class="cursor-pointer a" to="">查看更多&gt;</NuxtLink>
+      <NuxtLink class="cursor-pointer a" to="/home/Myself"
+        >查看更多&gt;</NuxtLink
+      >
     </div>
     <NuxtLink
       class="block text-center w-[25%]"
@@ -41,7 +43,7 @@ const { user } = defineProps<{
 </template>
 
 <style scoped>
-.a{
+.a {
   text-decoration: none;
 }
 </style>
