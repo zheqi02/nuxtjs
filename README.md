@@ -11,7 +11,7 @@ _Live Example: https://nuxtjs-template.vercel.app_
 Install the dependencies:
 
 ```bash
-pnpm install
+yarn install
 ```
 
 ## Development
@@ -19,7 +19,7 @@ pnpm install
 Start the development server on http://localhost:3000:
 
 ```bash
-pnpm dev
+yarn dev
 ```
 
 ## Deploy Your Own
@@ -27,7 +27,7 @@ pnpm dev
 Build the application for production:
 
 ```bash
-pnpm build
+yarn build
 ```
 
 

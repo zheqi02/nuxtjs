@@ -12,7 +12,13 @@ watch(y, () => {
 })
 
 const changeTop = () => {
-  if (process.client) window.scrollTo(0, 0)
+  if (process.client) {
+    // 回到顶部并过渡
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+  }
 }
 </script>
 

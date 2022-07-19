@@ -3,8 +3,6 @@ const { data: items } = await useAsyncData('items', () => {
   return queryContent('project').find()
 })
 
-const { data: user } = await useFetch('/api/user')
-
 // 分类
 const categories = items.value[0].body.reduce(
   (acc: any[], ele: { category: any }) => {

@@ -19,6 +19,12 @@ export default defineNuxtConfig({
       theme: 'dracula-soft'
     }
   },
+  // plugins: [
+  //   {
+  //     src: '~/plugins/swiper.ts',
+  //     ssr: false
+  //   }
+  // ],
   vueuse: {
     ssrHandlers: true
   },

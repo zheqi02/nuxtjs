@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import type { User } from '../types'
+import type { User } from '~/types'
+import async from '../server/api/user';
 
 const { user } = defineProps<{
   user: User
@@ -7,15 +8,11 @@ const { user } = defineProps<{
 </script>
 
 <template>
-  <div class="flex items-center border justify-around">
-    <NuxtLink class="block text-center" href="https://github.com/zhe-qi">
-      <img :src="user.avatar_url" alt="zhe-qi" class="w-[20vh] rounded-full" />
-      <p class="dark:text-white">{{ user.name }}</p>
-    </NuxtLink>
-    <div class="prose lg:prose-xl dark:text-white">
-      name: <span class="rainbow-text">折七</span>
+  <div class="w-full h-full flex border justify-around">
+    <div class="prose lg:prose-xs dark:text-white">
+      网名: <span class="rainbow-text">折七</span>
       <br />
-      age: <span class="text-red-400">20</span>没到
+      年龄: <span class="text-red-400">20</span>没到
       <br />
       🌈学了差不多1400个小时的前端半年左右✨
       <br />
@@ -26,14 +23,25 @@ const { user } = defineProps<{
       🥰冶院丁针，鉴定为<span class="text-sky-300">带砖</span>!🍀
       <br />
       🌈喜欢<span class="text-emerald-400">主流前沿技术</span>
-      ，喜欢游戏、小说、音乐🌠
+      ，喜欢游戏、小说、音乐
       <br />
-      🙈写这个网站的第<span class="text-orange-400">{{ 4 }}</span
+      🌠写这个网站的第<span class="text-orange-400">{{ 5 }}</span
       >天🌟(不连续)
       <br />
-      🌠左边是从github拉取的资料，点击可以跳转😶‍🌫️
+      <NuxtLink class="cursor-pointer a" to="">查看更多&gt;</NuxtLink>
     </div>
+    <NuxtLink
+      class="block text-center w-[25%]"
+      href="https://github.com/zhe-qi"
+    >
+      <img :src="user.avatar_url" alt="zhe-qi" class="w-full rounded-full" />
+      <p class="dark:text-white">{{ user.name }}</p>
+    </NuxtLink>
   </div>
 </template>
 
-<style></style>
+<style scoped>
+.a{
+  text-decoration: none;
+}
+</style>

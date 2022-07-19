@@ -98,7 +98,7 @@ const { list, containerProps, wrapperProps } = useVirtualList(filteredList, {
   <header
     class="fixed z-10 backdrop-blur-md w-screen dark:border-zinc-600 border-b-2 flex items-center justify-between h-16 px-[5%] lg:px-[15%]"
   >
-    <NuxtLink to="/" class="font-bold text-2xl lg:text-4xl">
+    <NuxtLink to="/" title="回到初始页" class="font-bold text-2xl lg:text-4xl">
       <div class="rainbow-text">zhe-qi</div>
     </NuxtLink>
     <nav class="flex items-center space-x-7 text-gray-600">
