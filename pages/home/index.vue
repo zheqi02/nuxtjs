@@ -57,12 +57,26 @@ const showFilter = () => {
   isFilter = !isFilter
 }
 
+let search = $ref('')
+let indexV = $ref(0)
 // 使用虚拟列表
-const allItems = Array.from(Array(99999).keys())
-const filteredList = computed(() => allItems)
-const { list, containerProps, wrapperProps } = useVirtualList(filteredList, {
-  itemHeight: 22
-})
+const allItems = Array.from(Array(99999).keys()).map(i => ({
+  height: i % 2 === 0 ? 42 : 84,
+  size: i % 2 === 0 ? 'small' : 'large'
+}))
+const filteredList = computed(() =>
+  allItems.filter(i => i.size.startsWith(search.toLowerCase()))
+)
+const { list, containerProps, wrapperProps, scrollTo } = useVirtualList(
+  filteredList,
+  {
+    itemHeight: 22
+  }
+)
+const handleScrollTo = () => {
+  if(indexV >= 0)
+  scrollTo(indexV)
+}
 
 interface Util {
   url: string
@@ -154,7 +168,7 @@ const utils: Util[] = [
       <!-- 文章列表 -->
       <section class="lg:pt-7 pt-2 w-full">
         <div class="flex justify-between h-[1000px] overflow-y-hidden w-full">
-          <div class="lg:w-[70%] w-full h-full bg-zinc-50">
+          <div class="lg:w-[70%]  w-full h-full bg-zinc-50">
             <div
               class="lg:flex border-b lg:justify-between lg:w-full w-screen py-2 bg-zinc-50"
             >
@@ -168,7 +182,18 @@ const utils: Util[] = [
             </div>
             <!-- 过滤列表 -->
             <Transition>
-              <div v-if="isFilter" class="h-40 overflow-hidden w-full bg-blue-200"></div>
+              <div v-if="isFilter" class="h-40 p-2 w-full">
+                <div class="flex w-[60%]">
+                  <input
+                    type="text"
+                    placeholder="Input search text"
+                    class="input w-[80%] max-w-xs"
+                    v-model="search"
+                  />
+                  <input type="number" class="ml-2 w-[12%]" v-model="indexV" />
+                  <button class="ml-2 border text-center" @click="handleScrollTo">跳转</button>
+                </div>
+              </div>
             </Transition>
             <!-- 虚拟列表 -->
             <div
@@ -181,7 +206,7 @@ const utils: Util[] = [
                   :key="item.index"
                   class="h-20 border p-2 m-2"
                 >
-                  <div>Row: {{ item.data }}</div>
+                  <div>Row: {{ item.data.size }}</div>
                 </div>
               </div>
             </div>
