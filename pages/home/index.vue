@@ -4,52 +4,7 @@ useHead({
   title: 'ZheQi Home'
 })
 
-const { $modules } = useNuxtApp()
 const { data: user } = await useFetch('/api/user')
-
-interface Imgs {
-  url: string
-  title: string
-}
-
-const imgs: Imgs[] = [
-  // {
-  //   url: 'https://api.qicaiyun.top/ercy/api.php',
-  //   title: '第一张'
-  // },
-  {
-    url: 'https://api.ghser.com/random/pc.php',
-    title: '第二张'
-  },
-  {
-    url: 'http://api.btstu.cn/sjbz/?lx=dongman',
-    title: '第三张'
-  },
-  {
-    url: 'https://api.ixiaowai.cn/api/api.php',
-    title: '第四张'
-  },
-  {
-    url: 'https://api.btstu.cn/sjbz/?lx=suiji',
-    title: '第五张'
-  },
-  {
-    url: 'https://img.paulzzh.com/touhou/random',
-    title: '第六张'
-  },
-  {
-    url: 'https://img.xjh.me/random_img.php?return=302',
-    title: '第七张'
-  },
-  {
-    url: 'http://api.btstu.cn/sjbz/?lx=dongman',
-    title: '第八张'
-  },
-  {
-    url: 'https://www.dmoe.cc/random.php',
-    title: '第九张'
-  }
-]
 
 let isFilter = $ref(false)
 
@@ -98,7 +53,7 @@ const utils: Util[] = [
     url: 'https://picsum.photos/',
     img: 'https://tva1.sinaimg.cn/large/0072Vf1pgy1foxlnf6ksdj31kw0w0dzb.jpg',
     title: 'Picsum',
-    text: '这是一个图片API生成工具'
+    text: '这是一个随机图片API生成工具'
   },
   {
     id: '3',
@@ -115,57 +70,42 @@ const utils: Util[] = [
     <main class="pt-[4.5rem] w-full">
       <!-- 头上三个大板块 -->
       <div
-        class="grid lg:grid-cols-3 grid-cols-1 lg:grid-rows-1 grid-rows-3 lg:gap-4 lg:h-64 w-full"
+        class="grid bg-zinc-50 dark:bg-black lg:grid-cols-3 grid-cols-1 lg:grid-rows-1 grid-rows-3 lg:gap-4 lg:h-64 w-full"
       >
         <div
-          class="bg-zinc-50 dark:contrast-50 dark:bg-zinc-900 grid rounded overflow-hidden grid-cols-2 grid-rows-2 gap-4"
+          class="bg-white dark:contrast-50 dark:bg-black grid rounded overflow-hidden grid-cols-2 grid-rows-2 gap-4"
         >
           <div class="overflow-hidden rounded cursor-pointer">
             <img
-              class="bg-cover bg-center hover:scale-150 transition-all"
+              class="object-cover border hover:scale-150 transition-all"
               src="https://tva2.sinaimg.cn/large/87c01ec7gy1frx3t6m651j21hc0u07cj.jpg"
               alt=""
             />
           </div>
           <div class="overflow-hidden rounded cursor-pointer">
             <img
-              class="bg-cover bg-center hover:scale-150 transition-all"
+              class="object-cover border hover:scale-150 transition-all"
               src="https://tva4.sinaimg.cn/large/0072Vf1pgy1foxkfsdn3mj31hc0u0nhh.jpg"
               alt=""
             />
           </div>
           <div class="overflow-hidden rounded cursor-pointer">
             <img
-              class="bg-cover bg-center hover:scale-150 transition-all"
+              class="object-cover border hover:scale-150 transition-all"
               src="https://tva4.sinaimg.cn/large/0072Vf1pgy1foxkj1cgi7j31hc0u0n9m.jpg"
               alt=""
             />
           </div>
           <div class="overflow-hidden rounded cursor-pointer">
             <img
-              class="bg-cover bg-center hover:scale-150 transition-all"
+              class="object-cover border hover:scale-150 transition-all"
               src="https://tva1.sinaimg.cn/large/0072Vf1pgy1foxk7272z8j31kw0w0h0a.jpg"
               alt=""
             />
           </div>
         </div>
-        <div class="bg-zinc-50 dark:bg-zinc-900 overflow-hidden rounded lg:h-full w-full h-52">
-          <swiper
-            class="w-full h-full cursor-col-resize"
-            :modules="$modules"
-            :loop="true"
-            :scrollbar="{ draggable: true }"
-            :autoplay="{
-              delay: 4000,
-              disableOnInteraction: false
-            }"
-          >
-            <template v-for="item in imgs" :key="item.title">
-              <swiper-slide class="w-full h-full dark:brightness-75">
-                <img class="object-cover w-full h-full" :src="item.url" :alt="item.title" />
-              </swiper-slide>
-            </template>
-          </swiper>
+        <div class="bg-white dark:bg-black overflow-hidden rounded lg:h-full w-full h-52">
+          <Swiper></Swiper>
         </div>
         <div class="bg-white dark:bg-zinc-800 text-ellipsis overflow-hidden">
           <Introduce :user="user" class="rounded" />
@@ -174,7 +114,7 @@ const utils: Util[] = [
       <!-- 文章列表 -->
       <section class="lg:pt-7 pt-2 w-full">
         <div class="flex justify-between h-[1000px] overflow-y-hidden w-full">
-          <div class="lg:w-[70%]  overflow-hidden dark:bg-zinc-800 w-full h-full bg-zinc-50">
+          <div class="lg:w-[70%] overflow-hidden dark:bg-zinc-800 w-full h-full bg-white border rounded">
             <div
               class="flex dark:text-red-50 border-b justify-between w-full py-2 dark:bg-zinc-800 bg-zinc-50"
             >
@@ -226,9 +166,9 @@ const utils: Util[] = [
           <aside class="w-[28%] lg:block hidden">
             <!-- 公告 -->
             <div
-              class="prose dark:text-yellow-50 lg:prose-xs border h-72 mb-2 w-full rounded dark:bg-zinc-900 bg-zinc-50 p-2"
+              class="prose dark:text-yellow-50 lg:prose-xs border h-72 mb-2 w-full rounded dark:bg-black bg-zinc-50 p-2"
             >
-              <h1 class="text-center dark:text-yellow-50 text-xl font-bold">关于本站</h1>
+              <h1 class="text-center dark:text-yellow-50 text-xl rainbow-text font-bold">关于本站</h1>
               <p class="indent-8">
                 互相学习，成长，相关源代码可以在我的<span class="text-blue-400"
                   >github</span
@@ -242,8 +182,8 @@ const utils: Util[] = [
                 >，遇到更菜的也可以适当解答。
               </p>
             </div>
-            <div class="w-full bg-zinc-50 dark:text-yellow-50 dark:bg-zinc-900 h-[1000px] p-2">
-              <h1 class="text-center dark:text-yellow-50 text-xl font-bold">开发工具</h1>
+            <div class="w-full bg-zinc-50 border dark:text-yellow-50 dark:bg-black h-[1000px] p-2">
+              <h1 class="text-center rainbow-text dark:text-yellow-50 text-xl font-bold">开发工具</h1>
               <ul class="h-full w-full">
                 <li
                   class="w-full h-32 p-2 border rounded"

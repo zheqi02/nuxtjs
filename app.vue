@@ -17,7 +17,7 @@ onMounted(() => {
   if (process.client) {
     const arr = Array.from(new Array(87), (_, i) => i + 1)
     new Paul_Pio({
-      mode: 'fixed',
+      mode: 'draggable',
       hidden: true,
       content: {
         link: 'https://nuxtjs-zhe-qi.vercel.app/home/Myself',
@@ -42,7 +42,33 @@ onMounted(() => {
       night: () => {
         isDark.value = !isDark.value
       },
-      model: [`https://zheqi.club/Pio/models/pio/${arr[Math.floor(Math.random() * arr.length)]}.json`]
+      model: [
+        `https://zheqi.club/Pio/models/pio/${
+          arr[Math.floor(Math.random() * arr.length)]
+        }.json`
+      ]
+    })
+  }
+})
+
+// 拖动时鼠标的样式
+const pio = $ref<HTMLElement | null>(null)
+onMounted(() => {
+  if (process.client) {
+    watchEffect(() => {
+      pio?.addEventListener('mousedown', () => {
+        pio.style.cursor = 'grabbing'
+      })
+      pio?.addEventListener('drag', () => {
+        pio.style.cursor = 'grabbing'
+      })
+      pio?.addEventListener('mouseup', () => {
+        pio.style.cursor = 'grab'
+        if (pio.offsetLeft < 100 && pio.offsetTop > 700) {
+          pio.style.left = '0'
+          pio.style.top = '830px'
+        }
+      })
     })
   }
 })
@@ -52,9 +78,9 @@ onMounted(() => {
   <div>
     <NuxtLayout>
       <NuxtPage />
-      <div class="pio-container left">
+      <div ref="pio" class="pio-container cursor-grab left">
         <div class="pio-action"></div>
-        <canvas id="pio" width="277" height="260"></canvas>
+        <canvas id="pio" width="222" height="210"></canvas>
       </div>
     </NuxtLayout>
   </div>
