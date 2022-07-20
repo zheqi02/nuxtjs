@@ -46,7 +46,7 @@ const utils: Util[] = [
     url: 'https://vuetelescope.com/',
     img: 'https://tva3.sinaimg.cn/large/0072Vf1pgy1fodqo0e8fzj31hc0xcqv5.jpg',
     title: 'Vuetelescope',
-    text: '这是一个可以查看你vue技术栈的工具'
+    text: '这是一个可以查看你vue技术栈的浏览器插件'
   },
   {
     id: '2',

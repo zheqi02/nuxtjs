@@ -10,20 +10,23 @@ const imgs: Imgs[] = [
   //   title: '第一张'
   // },
   {
-    url: 'https://api.ghser.com/random/pc.php',
+    // https://api.ghser.com/random/pc.php
+    url: 'https://tva1.sinaimg.cn/large/0072Vf1pgy1foxk44i0ekj31hc0u0drp.jpg',
     title: '第二张'
   },
   {
-    url: 'http://api.btstu.cn/sjbz/?lx=dongman',
+    // http://api.btstu.cn/sjbz/?lx=dongman
+    url: 'https://tva1.sinaimg.cn/large/006gkh44ly1fw6ssoq7z0j31kw0w01jn.jpg',
     title: '第三张'
   },
   {
-    url: 'https://tva1.sinaimg.cn/large/0072Vf1pgy1foxkj1cgi7j31hc0u0n9m.jpg',
+    url: 'https://tva1.sinaimg.cn/large/9bd9b167gy1g4c8qk3d33j21hc0u0nnj.jpg',
     title: '第四张'
   },
   {
+    // https://api.ixiaowai.cn/api/api.php
     // https://api.btstu.cn/sjbz/?lx=suiji
-    url: 'https://api.ixiaowai.cn/api/api.php',
+    url: 'https://tva1.sinaimg.cn/large/0072Vf1pgy1foxki8yafwj31kw0w04oy.jpg',
     title: '第五张'
   },
   {

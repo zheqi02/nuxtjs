@@ -64,7 +64,7 @@ onMounted(() => {
       })
       pio?.addEventListener('mouseup', () => {
         pio.style.cursor = 'grab'
-        if (pio.offsetLeft < 100 && pio.offsetTop > 700) {
+        if (pio.offsetLeft < 150 && pio.offsetTop > 600) {
           pio.style.left = '0'
           pio.style.top = '830px'
         }
