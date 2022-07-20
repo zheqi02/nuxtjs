@@ -118,7 +118,7 @@ const utils: Util[] = [
         class="grid lg:grid-cols-3 grid-cols-1 lg:grid-rows-1 grid-rows-3 lg:gap-4 lg:h-64 w-full"
       >
         <div
-          class="bg-zinc-50 grid rounded overflow-hidden grid-cols-2 grid-rows-2 gap-4"
+          class="bg-zinc-50 dark:contrast-50 dark:bg-zinc-900 grid rounded overflow-hidden grid-cols-2 grid-rows-2 gap-4"
         >
           <div class="overflow-hidden rounded cursor-pointer">
             <img
@@ -149,7 +149,7 @@ const utils: Util[] = [
             />
           </div>
         </div>
-        <div class="bg-zinc-50 overflow-hidden rounded lg:h-full w-full h-52">
+        <div class="bg-zinc-50 dark:bg-zinc-900 overflow-hidden rounded lg:h-full w-full h-52">
           <swiper
             class="w-full h-full cursor-col-resize"
             :modules="$modules"
@@ -162,21 +162,21 @@ const utils: Util[] = [
           >
             <template v-for="item in imgs" :key="item.title">
               <swiper-slide class="w-full h-full dark:brightness-75">
-                <img :src="item.url" :alt="item.title" />
+                <img class="object-cover w-full h-full" :src="item.url" :alt="item.title" />
               </swiper-slide>
             </template>
           </swiper>
         </div>
-        <div class="bg-white dark:bg-zinc-800">
+        <div class="bg-white dark:bg-zinc-800 text-ellipsis overflow-hidden">
           <Introduce :user="user" class="rounded" />
         </div>
       </div>
       <!-- 文章列表 -->
       <section class="lg:pt-7 pt-2 w-full">
         <div class="flex justify-between h-[1000px] overflow-y-hidden w-full">
-          <div class="lg:w-[70%] w-full h-full bg-zinc-50">
+          <div class="lg:w-[70%]  overflow-hidden dark:bg-zinc-800 w-full h-full bg-zinc-50">
             <div
-              class="lg:flex border-b lg:justify-between lg:w-full w-screen py-2 bg-zinc-50"
+              class="flex dark:text-red-50 border-b justify-between w-full py-2 dark:bg-zinc-800 bg-zinc-50"
             >
               <div class="border-l-2 border-l-purple-500 pl-2">文章列表</div>
               <div class="flex items-center cursor-pointer" @click="showFilter">
@@ -188,27 +188,28 @@ const utils: Util[] = [
             </div>
             <!-- 过滤列表 -->
             <Transition>
-              <div v-if="isFilter" class="h-40 p-2 w-full">
-                <div class="flex w-[60%]">
+              <div v-if="isFilter" class="h-40 w-full p-2">
+                <div class="grid grid-cols-3 grid-row-1 w-full h-15">
                   <input
                     type="text"
-                    placeholder="Input search text"
-                    class="input w-[80%] max-w-xs"
+                    placeholder="filter title"
+                    class="input dark:bg-zinc-600"
                     v-model="search"
                   />
-                  <input type="number" class="ml-2 w-[12%]" v-model="indexV" />
+                  <input type="number" class="ml-2 dark:bg-zinc-600" v-model="indexV" />
                   <button
-                    class="ml-2 border text-center"
+                    class="btn dark:hover:bg-zinc-600 btn-outline btn-info ml-2"
                     @click="handleScrollTo"
                   >
                     跳转
                   </button>
                 </div>
+                ......
               </div>
             </Transition>
             <!-- 虚拟列表 -->
             <div
-              class="w-full h-[calc(100%-42px)]"
+              class="w-full dark:bg-black dark:text-green-50 h-[calc(100%-2.65rem)]"
               v-bind="(containerProps as any)"
             >
               <div v-bind="wrapperProps">
@@ -225,9 +226,9 @@ const utils: Util[] = [
           <aside class="w-[28%] lg:block hidden">
             <!-- 公告 -->
             <div
-              class="prose lg:prose-xs border h-72 mb-2 w-full rounded bg-zinc-50 p-2"
+              class="prose dark:text-yellow-50 lg:prose-xs border h-72 mb-2 w-full rounded dark:bg-zinc-900 bg-zinc-50 p-2"
             >
-              <h1 class="text-center text-xl font-bold">关于本站</h1>
+              <h1 class="text-center dark:text-yellow-50 text-xl font-bold">关于本站</h1>
               <p class="indent-8">
                 互相学习，成长，相关源代码可以在我的<span class="text-blue-400"
                   >github</span
@@ -241,8 +242,8 @@ const utils: Util[] = [
                 >，遇到更菜的也可以适当解答。
               </p>
             </div>
-            <div class="w-full bg-zinc-50 h-[1000px] p-2">
-              <h1 class="text-center text-xl font-bold">开发工具</h1>
+            <div class="w-full bg-zinc-50 dark:text-yellow-50 dark:bg-zinc-900 h-[1000px] p-2">
+              <h1 class="text-center dark:text-yellow-50 text-xl font-bold">开发工具</h1>
               <ul class="h-full w-full">
                 <li
                   class="w-full h-32 p-2 border rounded"
@@ -260,8 +261,8 @@ const utils: Util[] = [
                       alt=""
                     />
                     <div class="prose w-[60%] ml-2">
-                      <h4 class="text-center">{{ item.title }}</h4>
-                      <p>{{ item.text }}</p>
+                      <h4 class="text-center dark:text-red-50">{{ item.title }}</h4>
+                      <p class="dark:text-yellow-50">{{ item.text }}</p>
                     </div>
                   </NuxtLink>
                 </li>
