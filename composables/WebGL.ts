@@ -37,12 +37,12 @@ const WebGL = (dom: HTMLElement) => {
   controls.enableDamping = true
 
   const dracoLoader = new DRACOLoader()
-  dracoLoader.setDecoderPath('/draco/gltf/')
+  dracoLoader.setDecoderPath('https://zheqi.club/draco/gltf/')
 
   const loader = new GLTFLoader()
   loader.setDRACOLoader(dracoLoader)
   loader.load(
-    '/models/LittlestTokyo.glb',
+    'https://zheqi.club/models/LittlestTokyo.glb',
     function (gltf: { scene: any; animations: THREE.AnimationClip[] }) {
       const model = gltf.scene
       model.position.set(1, 1, 0)
