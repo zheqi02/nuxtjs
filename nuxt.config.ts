@@ -1,5 +1,4 @@
 import { defineNuxtConfig } from 'nuxt'
-import glsl from 'vite-plugin-glsl'
 
 // https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
 export default defineNuxtConfig({
@@ -37,9 +36,6 @@ export default defineNuxtConfig({
     shim: false
   },
   build: {
-    transpile: ['three']
-  },
-  vite: {
-    plugins: [glsl()]
+    analyze: true
   }
 })

@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { isDark } from '#imports'
-
 import { Icon } from '@iconify/vue'
 const links = [
   {
@@ -20,7 +18,7 @@ const links = [
     text: 'Github'
   }
 ]
-
+const { isDark } = await import('#imports')
 const handlerColorMode = () => (isDark.value = !isDark.value)
 
 const target = ref<HTMLElement | null>(null)

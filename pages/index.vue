@@ -6,15 +6,6 @@ useHead({
   title: 'ZheQi Blog'
 })
 
-// 获取标题在content
-// const { data: blogNav } = await useAsyncData('navigation', () => {
-//   return fetchContentNavigation(queryContent('blog'))
-// })
-
-// const nav = toRaw(blogNav.value)
-
-// console.log(nav)
-
 // 触发玩具彩蛋
 let isColor = $ref(false)
 const changeSwitch = () => {
@@ -110,7 +101,6 @@ const searchBing = () => {
         </div>
       </section>
       <div class="w-screen lg:px-[30%] px-[5%]">
-        <ThreeCanvas/>
       </div>
       <!-- links -->
       <section class="lg:px-[15%] px-[5%] lg:mt-16">
