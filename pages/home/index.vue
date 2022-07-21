@@ -11,16 +11,64 @@ let isFilter = $ref(false)
 const showFilter = () => {
   isFilter = !isFilter
 }
+// http://www.dmoe.cc/random.php
+// https://img.xjh.me/random_img.php
+// https://api.ghser.com/random/api.php
+
+const rdmImg = [
+  'https://tva1.sinaimg.cn/large/0072Vf1pgy1foxkj2ashuj31kw0w0hcp.jpg',
+  'https://tva1.sinaimg.cn/large/9bd9b167gy1g4li9pcge2j21hc0xcb29.jpg',
+  'https://tva3.sinaimg.cn/large/0072Vf1pgy1foxkihz4b4j31hc0u0wux.jpg',
+  'https://tva1.sinaimg.cn/large/006gkh44ly1fw72u8rmohj31hc0u0tyb.jpg',
+  'https://tva3.sinaimg.cn/large/0072Vf1pgy1foxk3gtfinj31hc0u0k6t.jpg',
+  'https://tva2.sinaimg.cn/large/0072Vf1pgy1foxkfob8yfj31hc0u0ts9.jpg',
+  'https://ae01.alicdn.com/kf/HTB10cz_XBGw3KVjSZFD760WEpXas.png',
+  'https://tva1.sinaimg.cn/large/0076R7yAgy1fq8ds6c448j31hc0u016f.jpg',
+  'https://tva1.sinaimg.cn/large/006gkh44ly1fw6sscydcwj31hc0u0h4r.jpg',
+  'https://ae01.alicdn.com/kf/Ha32ccf3a64c240869ee3604e80c5d023i.jpg',
+  'https://tva1.sinaimg.cn/large/9bd9b167ly1g2qmjashi6j21hc0u0u0x.jpg',
+  'https://tva1.sinaimg.cn/large/0072Vf1pgy1fodqpadh6zj31kw14nnpe.jpg'
+]
+
+interface ArtcleData {
+  _path: string
+  title: string
+  children?: ArtcleData[]
+  img?: string
+}
+
+// 获取所有文章导航
+const artcleData: ArtcleData[] = $ref([])
+const { data: blogNav } = await useAsyncData('navigation', () => {
+  return fetchContentNavigation(queryContent('blog'))
+})
+const nav = toRaw(blogNav.value) as Array<ArtcleData>
+// 递归把所有叶子节点放入数组artcleData
+const recursion = (data: ArtcleData[]) => {
+  data.forEach(item => {
+    if (item.children) {
+      recursion(item.children)
+    } else {
+      artcleData.push(
+        Object.assign(
+          { img: rdmImg[Math.floor(Math.random() * rdmImg.length)] },
+          item
+        )
+      )
+    }
+  })
+}
+recursion(nav)
 
 let search = $ref('')
 let indexV = $ref(0)
+
 // 使用虚拟列表
-const allItems = Array.from(Array(99999).keys()).map(i => ({
-  height: i % 2 === 0 ? 42 : 84,
-  size: i % 2 === 0 ? 'small' : 'large'
-}))
+// 不区分大小写过滤
 const filteredList = computed(() =>
-  allItems.filter(i => i.size.startsWith(search.toLowerCase()))
+  artcleData.filter(item =>
+    item.title.toLowerCase().includes(search.toLowerCase())
+  )
 )
 const { list, containerProps, wrapperProps, scrollTo } = useVirtualList(
   filteredList,
@@ -104,7 +152,9 @@ const utils: Util[] = [
             />
           </div>
         </div>
-        <div class="bg-white dark:bg-black overflow-hidden rounded lg:h-full w-full h-52">
+        <div
+          class="bg-white dark:bg-black overflow-hidden rounded lg:h-full w-full h-52"
+        >
           <Swiper></Swiper>
         </div>
         <div class="bg-white dark:bg-zinc-800 text-ellipsis overflow-hidden">
@@ -114,7 +164,9 @@ const utils: Util[] = [
       <!-- 文章列表 -->
       <section class="lg:pt-7 pt-2 w-full">
         <div class="flex justify-between h-[1000px] overflow-y-hidden w-full">
-          <div class="lg:w-[70%] overflow-hidden dark:bg-zinc-800 w-full h-full bg-white border rounded">
+          <div
+            class="lg:w-[70%] overflow-hidden dark:bg-zinc-800 w-full h-full bg-white border rounded"
+          >
             <div
               class="flex dark:text-red-50 border-b justify-between w-full py-2 dark:bg-zinc-800 bg-zinc-50"
             >
@@ -136,7 +188,11 @@ const utils: Util[] = [
                     class="input dark:bg-zinc-600"
                     v-model="search"
                   />
-                  <input type="number" class="ml-2 dark:bg-zinc-600" v-model="indexV" />
+                  <input
+                    type="number"
+                    class="ml-2 dark:bg-zinc-600"
+                    v-model="indexV"
+                  />
                   <button
                     class="btn dark:hover:bg-zinc-600 btn-outline btn-info ml-2"
                     @click="handleScrollTo"
@@ -153,13 +209,15 @@ const utils: Util[] = [
               v-bind="(containerProps as any)"
             >
               <div v-bind="wrapperProps">
-                <div
+                <NuxtLink
                   v-for="item in list"
-                  :key="item.index"
-                  class="h-20 border p-2 m-2"
+                  :key="'Nav' + item.index + item.data.title"
+                  class="h-20 border p-2 m-2 flex"
+                  :to="'/blog' + item.data._path"
                 >
-                  <div>Row: {{ item.data.size }}</div>
-                </div>
+                  <img class="h-full w-28 object-cover" :src="item.data.img" alt="" />
+                  <div class="ml-2">title: <span class="rainbow-text">{{ item.data.title }}</span></div>
+                </NuxtLink>
               </div>
             </div>
           </div>
@@ -168,7 +226,11 @@ const utils: Util[] = [
             <div
               class="prose dark:text-yellow-50 lg:prose-xs border h-72 mb-2 w-full rounded dark:bg-black bg-zinc-50 p-2"
             >
-              <h1 class="text-center dark:text-yellow-50 text-xl rainbow-text font-bold">关于本站</h1>
+              <h1
+                class="text-center dark:text-yellow-50 text-xl rainbow-text font-bold"
+              >
+                关于本站
+              </h1>
               <p class="indent-8">
                 互相学习，成长，相关源代码可以在我的<span class="text-blue-400"
                   >github</span
@@ -182,8 +244,14 @@ const utils: Util[] = [
                 >，遇到更菜的也可以适当解答。
               </p>
             </div>
-            <div class="w-full bg-zinc-50 border dark:text-yellow-50 dark:bg-black h-[1000px] p-2">
-              <h1 class="text-center rainbow-text dark:text-yellow-50 text-xl font-bold">开发工具</h1>
+            <div
+              class="w-full bg-zinc-50 border dark:text-yellow-50 dark:bg-black h-[1000px] p-2"
+            >
+              <h1
+                class="text-center rainbow-text dark:text-yellow-50 text-xl font-bold"
+              >
+                开发工具
+              </h1>
               <ul class="h-full w-full">
                 <li
                   class="w-full h-32 p-2 border rounded"
@@ -201,7 +269,9 @@ const utils: Util[] = [
                       alt=""
                     />
                     <div class="prose w-[60%] ml-2">
-                      <h4 class="text-center dark:text-red-50">{{ item.title }}</h4>
+                      <h4 class="text-center dark:text-red-50">
+                        {{ item.title }}
+                      </h4>
                       <p class="dark:text-yellow-50">{{ item.text }}</p>
                     </div>
                   </NuxtLink>

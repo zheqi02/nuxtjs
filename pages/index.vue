@@ -7,9 +7,13 @@ useHead({
 })
 
 // 获取标题在content
-const { data: blogNav } = await useAsyncData('navigation', () => {
-  return fetchContentNavigation(queryContent('blog'))
-})
+// const { data: blogNav } = await useAsyncData('navigation', () => {
+//   return fetchContentNavigation(queryContent('blog'))
+// })
+
+// const nav = toRaw(blogNav.value)
+
+// console.log(nav)
 
 // 触发玩具彩蛋
 let isColor = $ref(false)
@@ -39,11 +43,11 @@ const searchBing = () => {
 </script>
 
 <template>
-  <div class="pt-16">
+  <div class="pt-10 box-border lg:h-screen min-h-screen">
     <!-- 语义化标签更有利于爬虫的抓取做seo优化 -->
-    <main class="dark:bg-zinc-800 min-h-screen">
+    <main class="dark:bg-zinc-800">
       <!-- titles -->
-      <section class="lg:px-[15%] px-[5%] pt-10">
+      <section class="lg:px-[15%] px-[5%] pt-20">
         <!-- title1 -->
         <h1
           class="dark:text-white lg:text-5xl text-2xl leading-normal font-semibold text-center"
@@ -94,11 +98,8 @@ const searchBing = () => {
             />
           </div>
         </h1>
-      </section>
-      <!-- links -->
-      <section class="lg:px-[15%] px-[5%] lg:pt-20 pt-14">
         <!-- search -->
-        <div class="flex justify-center items-center">
+        <div class="flex justify-center lg:mt-6 items-center">
           <input
             v-model="bingValue"
             @keydown.enter="searchBing"
@@ -107,6 +108,12 @@ const searchBing = () => {
             class="input mb-2 input-ghost dark:focus:bg-zinc-700 w-full max-w-xs text-center font-medium tracking-wider text-gray-500"
           />
         </div>
+      </section>
+      <div class="w-screen lg:px-[30%] px-[5%]">
+        <ThreeCanvas/>
+      </div>
+      <!-- links -->
+      <section class="lg:px-[15%] px-[5%] lg:mt-16">
         <!-- title -->
         <p
           class="flex items-center justify-center uppercase font-medium tracking-wider mb-10 text-gray-500"
@@ -132,8 +139,9 @@ const searchBing = () => {
           </div>
         </div>
       </section>
+      <div></div>
       <!-- blogs -->
-      <section class="lg:px-[15%] px-[5%] lg:pt-10 pt-14">
+      <!--   <section class="lg:px-[15%] px-[5%] lg:pt-10 pt-14">
         <p
           class="flex items-center justify-center uppercase font-medium tracking-wider mb-10 text-gray-500"
         >
@@ -148,7 +156,7 @@ const searchBing = () => {
               <h2 class="text-lg font-semibold rainbow-text">
                 {{ b.title }}
               </h2>
-              <!-- 列表 -->
+              <!~~ 列表 ~~>
               <ul
                 v-if="b.children"
                 class="list-disc list-inside mt-4 pl-2 space-y-3"
@@ -176,7 +184,7 @@ const searchBing = () => {
             </div>
           </template>
         </div>
-      </section>
+      </section> -->
     </main>
   </div>
 </template>

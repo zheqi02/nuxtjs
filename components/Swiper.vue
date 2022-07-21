@@ -16,17 +16,17 @@ const imgs: Imgs[] = [
   },
   {
     // http://api.btstu.cn/sjbz/?lx=dongman
-    url: 'https://tva1.sinaimg.cn/large/006gkh44ly1fw6ssoq7z0j31kw0w01jn.jpg',
+    url: 'https://tva1.sinaimg.cn/large/006gkh44ly1fw6an6hc47j31hc0u0nlb.jpg',
     title: '第三张'
   },
   {
-    url: 'https://tva1.sinaimg.cn/large/9bd9b167gy1g4c8qk3d33j21hc0u0nnj.jpg',
+    url: 'https://tva4.sinaimg.cn/large/0072Vf1pgy1foxk70rdinj31kw0w0b19.jpg',
     title: '第四张'
   },
   {
     // https://api.ixiaowai.cn/api/api.php
     // https://api.btstu.cn/sjbz/?lx=suiji
-    url: 'https://tva1.sinaimg.cn/large/0072Vf1pgy1foxki8yafwj31kw0w04oy.jpg',
+    url: 'https://tva3.sinaimg.cn/large/0072Vf1pgy1foxkj74bl3j31hc0u0ng2.jpg',
     title: '第五张'
   },
   {

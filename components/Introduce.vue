@@ -25,7 +25,7 @@ const { user } = defineProps<{
       🌈喜欢<span class="text-emerald-400">主流前沿技术</span>
       ，喜欢游戏、小说、音乐
       <br />
-      🌠写这个网站的第<span class="text-orange-400">{{ 5 }}</span
+      🌠写这个网站的第<span class="text-orange-400">{{ 6 }}</span
       >天🌟(不连续)
       <br />
       <NuxtLink class="cursor-pointer a" to="/home/Myself"

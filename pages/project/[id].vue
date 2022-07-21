@@ -28,7 +28,7 @@ useHead({
         <div class="flex relative items-start flex-col lg:flex-row lg:gap-7">
           <div class="flex-1">
             <img
-              class="object-contain h-[20vh] lg:h-[70vh] dark:brightness-50"
+              class="object-cover h-[20vh] lg:h-[70vh] dark:brightness-50"
               :src="item.image"
               :alt="item.title"
             />
