@@ -70,7 +70,7 @@ useHead({
           <h1 class="dark:text-green-50 lg:text-lg font-medium mb-5">
             Filter Category
             <button
-              v-if="activeCategory"
+              v-show="activeCategory"
               @click="setCategory(null)"
               class="hover:bg-primary-100 hover:text-primary dark:bg-slate-800 dark:text-yellow-100 px-3 rounded text-[13px] capitalize bg-gray-200 ml-5"
             >

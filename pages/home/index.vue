@@ -180,7 +180,7 @@ const utils: Util[] = [
             </div>
             <!-- 过滤列表 -->
             <Transition>
-              <div v-if="isFilter" class="h-40 w-full p-2">
+              <div v-show="isFilter" class="h-40 w-full p-2">
                 <div class="grid grid-cols-3 grid-row-1 w-full h-15">
                   <input
                     type="text"
@@ -215,8 +215,15 @@ const utils: Util[] = [
                   class="h-20 border p-2 m-2 flex"
                   :to="'/blog' + item.data._path"
                 >
-                  <img class="h-full w-28 object-cover" :src="item.data.img" alt="" />
-                  <div class="ml-2">title: <span class="rainbow-text">{{ item.data.title }}</span></div>
+                  <img
+                    class="h-full w-28 object-cover"
+                    :src="item.data.img"
+                    alt=""
+                  />
+                  <div class="ml-2">
+                    title:
+                    <span class="rainbow-text">{{ item.data.title }}</span>
+                  </div>
                 </NuxtLink>
               </div>
             </div>
