@@ -38,7 +38,7 @@ const imgs: Imgs[] = [
     title: '第七张'
   },
   {
-    url: 'http://api.btstu.cn/sjbz/?lx=dongman',
+    url: 'https://api.btstu.cn/sjbz/?lx=dongman',
     title: '第八张'
   },
   {
