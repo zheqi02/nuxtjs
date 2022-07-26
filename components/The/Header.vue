@@ -36,7 +36,7 @@ let isSearch = $ref(true)
 const closeSearch = () => {
   setTimeout(() => {
     isSearch = true
-  }, 100)
+  }, 300)
 }
 
 const getSearchData = async () => {
