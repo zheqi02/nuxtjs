@@ -1,6 +1,6 @@
 ---
 title: 'vue review'
-tags: 'vue review, vue'
+tags: 'vue review, vue, vue基础, vue框架, vue技术, vue01, vue-01'
 ---
 [面向有基础且快速复习的作用，着重容易忘、重要、细节知识点]{.text-green-400}
 
