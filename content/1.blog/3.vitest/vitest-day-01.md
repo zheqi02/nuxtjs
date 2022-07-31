@@ -1,6 +1,6 @@
 ---
 title: 'vitest-day-01'
-tag: 'vitest, day-01, day-01-learn-vitest, vitestday01, vitestday01learnvitest'
+tag: 'vitest, day-01, day-01-learn-vitest, vitestday01, vitestday01learnvitest 单元测试'
 ---
 
 # 学习 vitest 单元测试

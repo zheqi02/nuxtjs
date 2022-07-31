@@ -14,7 +14,7 @@ export const developADocument: LinkList[] = [
     color: '	#FFC0CB'
   },
   {
-    href: 'https://cn.vitejs.dev/',
+    href: 'https://www.vitejs.net/',
     text: 'Vite 3',
     icon: 'logos:vitejs',
     color: '#DC143C'

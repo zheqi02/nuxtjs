@@ -1,15 +1,13 @@
 <script setup lang="ts">
 useHead({
-  link: [{ rel: 'icon', href: '/logo.png', type: 'image/png' }]
+  link: [{ rel: 'icon', href: '/favicon.ico', type: 'image/icon' }]
 })
 </script>
 
 <template>
-  <div>
-    <NuxtLayout>
-      <NuxtPage />
-    </NuxtLayout>
-  </div>
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
 </template>
 
 <style>

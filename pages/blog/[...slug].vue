@@ -31,48 +31,49 @@ const toc = computed(() => {
 useHead({
   title: `${blog.value.title}`
 })
+
 </script>
 
 <template>
-    <main class="pt-16">
-      <!-- 文章主体 -->
-      <article
-        class="dark:text-white dark:bg-zinc-800 max-w-max overflow-x-hidden lg:pt-20 pt-10 relative flex items-start lg:space-x-10 px-[5%] lg:px-[10%]"
+  <!-- 文章主体 -->
+  <article
+    class="dark:text-white dark:bg-zinc-800 pt-10 max-w-max overflow-x-hidden lg:pt-20 flex items-start lg:space-x-10 px-[5%] lg:px-[10%]"
+  >
+    <div class="w-[370px] hidden lg:block">
+      <div
+        v-if="blog.excerpt"
+        class="dark:bg-black w-[250px] p-5 fixed top-24 border rounded-md bg-white"
       >
-        <div
-          v-if="blog.excerpt"
-          class="dark:bg-black w-[300px] p-5 sticky top-3 border rounded-md bg-white hidden lg:block"
-        >
-          <h2 class="text-sm font-bold mb-4">Table Of Contents</h2>
-          <ul class="space-y-2">
-            <template v-for="(t, k) in toc" :key="`toc-item-${k}`">
-              <li>
-                <NuxtLink
-                  :class="{
-                    'text-sm ml-4': t.depth == 2,
-                    'text-[13px] ml-6': t.depth > 2
-                  }"
-                  class="capitalize truncate"
-                  :to="`#${t.id}`"
-                  >{{ t.title }}</NuxtLink
-                >
-              </li>
-            </template>
-          </ul>
-        </div>
-        <ClientOnly>
-          <!-- 渲染文章内容 -->
-          <ContentRenderer
-            class="dark:text-white prose lg:prose-base prose-sm prose-slate pr-7 blog-link w-screen lg:max-w-none"
-            :value="blog"
-          >
-            <template #empty>
-              <p>No content found.</p>
-            </template>
-          </ContentRenderer>
-        </ClientOnly>
-      </article>
-    </main>
+        <h2 class="text-sm font-bold mb-4">Table Of Contents</h2>
+        <ul class="space-y-2">
+          <template v-for="(t, k) in toc" :key="`toc-item-${k}`">
+            <li>
+              <NuxtLink
+                :class="{
+                  'text-sm ml-4': t.depth == 2,
+                  'text-[13px] ml-6': t.depth > 2
+                }"
+                class="capitalize truncate"
+                :to="`#${t.id}`"
+                >{{ t.title }}</NuxtLink
+              >
+            </li>
+          </template>
+        </ul>
+      </div>
+    </div>
+    <ClientOnly>
+      <!-- 渲染文章内容 -->
+      <ContentRenderer
+        class="dark:text-white prose lg:prose-base prose-sm prose-slate pr-7 blog-link w-screen lg:max-w-none"
+        :value="blog"
+      >
+        <template #empty>
+          <p>No content found.</p>
+        </template>
+      </ContentRenderer>
+    </ClientOnly>
+  </article>
 </template>
 
 <style scoped>
