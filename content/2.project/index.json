@@ -12,7 +12,7 @@
     },
     {
       "id": 2,
-      "title": "template-vue3-vite-ts-unocss ",
+      "title": "初始化项目模板",
       "description": "一个已经初始化完成，但是还需要安装依赖之后把tsconfig的extends定位过去并且把es2016改成ESNext或者ES2021以上才可以使用flatMap等新特性，然后husky得删掉重新install并且执行一条指令，指令在script里面有，先执行husky install对应的指令之后再执行下一个即可彻底初始化完成的一个vue3 vite ts unocss模板",
       "category": "template series",
       "image": "https://tva1.sinaimg.cn/large/9bd9b167gy1g4lhdj7edhj21hc0xc0yh.jpg",
@@ -22,7 +22,7 @@
     },
     {
       "id": 3,
-      "title": "netease-cloud-ts-vue3",
+      "title": "简易网易云",
       "description": "仿网易云客户端，以后可能会写一个桌面应用使用tauri，这个不是很完善，急于求成了，但是核心功能已经完成，搜索，播放，轮询，下一首，api的调用，歌词轮播等等等等，这个项目我这几天会重构掉",
       "category": "small project",
       "image": "https://tva1.sinaimg.cn/large/0072Vf1pgy1foxlnhfbv6j31hc0u0trk.jpg",
@@ -32,7 +32,7 @@
     },
     {
       "id": 4,
-      "title": "nuxtjs",
+      "title": "nuxt3博客项目",
       "description": "这是这个博客的所有代码，也是学nuxt的第一个项目，随着nuxt3技术的前进会逐渐完善的，现在的版本是rc5刚出3天，很多地方也只能互相学习，毕竟不是谁生来就会，文档也不是那么容易理解，要学习的东西还有很多，加油！",
       "category": "small project",
       "image": "https://ae01.alicdn.com/kf/HTB19bz4XEuF3KVjSZK9762VtXXa8.png",
@@ -42,13 +42,43 @@
     },
     {
       "id": 5,
-      "title": "zheqi-cli",
+      "title": "简易脚手架",
       "description": "这是一个最简单的cli，只用到了两个库，百分之99的内容靠cv，我也尝试过使用ts去构建稍微大型一点的cli，参照ts/cli，很可惜最后没有成功，以后等技术到位了再写，本来写了一个@zheqi/eslint-config，因为对npm和pnpm的monorepo和ts打包后发布npm不熟悉所以删了",
       "category": "npm package",
       "image": "https://tva1.sinaimg.cn/large/0072Vf1pgy1foxkic3ld0j31hc0u07rx.jpg",
       "rating": { "rate": 0, "star": 0 },
       "github": "https://github.com/zhe-qi/zheqi-cli",
       "time": "2022-06-01"
+    },
+    {
+      "id": 6,
+      "title": "eslint配置-npm",
+      "description": "使用了unbuild、monorepo、打造了百分百ts的eslint-config、参考了大神的代码仓库、学会了使用unbuild、monorepo、npm等技术",
+      "category": "npm package",
+      "image": "https://tva4.sinaimg.cn/large/a15b4afegy1fmvk16yis3j21hc0u0tpx.jpg",
+      "rating": { "rate": 0, "star": 0 },
+      "github": "https://github.com/zhe-qi/eslint-config",
+      "time": "2022-07-03"
+    },
+    {
+      "id": 7,
+      "title": "音乐播放器-桌面版",
+      "description": "使用了当下最热门的桌面基于webview的框架tauri、打造一款磨砂玻璃的音乐播放器、后端代码使用网易云api挂载在serverless上，但是这个接口不稳定，有的还跨域，在本地代理能用，桌面应用就没用了，但是核心功能还是不影响的，正在写当中，目前完成了百分之20左右写了三天",
+      "category": "small project",
+      "image": "https://tva1.sinaimg.cn/large/9bd9b167gy1g4lhmqv8k8j21hc0xcqny.jpg",
+      "rating": { "rate": 0, "star": 0 },
+      "github": "https://github.com/zhe-qi/netease-cloud-app",
+      "time": "2022-07-04"
+    },
+    {
+      "id": 8,
+      "title": "埋点sdk",
+      "description": "这是一个简单可拓展功能的埋点sdk，自动手动上报，使用unbuild构建，纯ts项目，用于异常处理，监视用户pv，uv，事件点击等操作",
+      "category": "npm package",
+      "image": "https://tva1.sinaimg.cn/large/0072Vf1pgy1fodqop5rd7j31kw148npj.jpg",
+      "rating": { "rate": 0, "star": 0 },
+      "github": "https://github.com/zhe-qi/tracker",
+      "time": "2022-06-20"
     }
   ]
 }

@@ -18,7 +18,7 @@ useHead({
           <p class="indent-8">
             可以加群一起讨论技术，也可以问我要一个t的前端学习资料，也可以给你们模拟面试，大佬也可以来带带萌新。
             可以是基础技术分享，也可以是技术探索。一起学习比如deno
-            fresh、bunjs、nuxt3、tauri啥的，这个网站就是用nuxt3+content2写的，serverless部署。
+            fresh、bunjs、nuxt3、tauri啥的，这个网站就是用nuxt3+content2写的，vercel部署。
           </p>
           <p class="indent-8">
             折七，大专第三年还没开学，年初开始学前端，主要是对前端感兴趣，技校升的带砖，妥妥的学渣一个，在此之前基本时间全部浪费，不看动漫，但是二次元图片也挺好看的，所以网页风格有些偏向于二次元。

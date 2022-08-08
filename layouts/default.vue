@@ -17,8 +17,8 @@ onMounted(() => {
     const arr = Array.from(new Array(87), (_, i) => i + 1)
     //@ts-ignore
     new Paul_Pio({
-      mode: 'draggable',
-      hidden: true,
+      mode: 'fixed',
+      hidden: false,
       content: {
         link: 'https://nuxtjs-zhe-qi.vercel.app/home/Myself',
         welcome: [
@@ -29,7 +29,7 @@ onMounted(() => {
         custom: [
           {
             selector: '.comment-form',
-            text: '欢迎参与本文评论，别发小广告噢~'
+            text: '欢迎提出宝贵意见'
           },
           {
             selector: '.home-social a:last-child',
@@ -59,10 +59,10 @@ onMounted(() => {
       })
       pio?.addEventListener('mouseup', () => {
         pio.style.cursor = 'grab'
-        if (pio.offsetLeft < 150 && pio.offsetTop > 600) {
-          pio.style.left = '0'
-          pio.style.top = '830px'
-        }
+        // if (pio.offsetLeft < 150 && pio.offsetTop > 600) {
+        //   pio.style.left = '0'
+        //   pio.style.top = '830px'
+        // }
       })
     })
   }
