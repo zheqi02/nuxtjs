@@ -30,26 +30,26 @@ const rdmImg = [
   'https://tva1.sinaimg.cn/large/0072Vf1pgy1fodqpadh6zj31kw14nnpe.jpg'
 ]
 
-interface ArtcleData {
+interface ArticleData {
   _path: string
   title: string
-  children?: ArtcleData[]
+  children?: ArticleData[]
   img?: string
 }
 
 // 获取所有文章导航
-const artcleData: ArtcleData[] = $ref([])
+const articleData: ArticleData[] = $ref([])
 const { data: blogNav } = await useAsyncData('navigation', () => {
   return fetchContentNavigation(queryContent('blog'))
 })
-const nav = toRaw(blogNav.value) as Array<ArtcleData>
-// 递归把所有叶子节点放入数组artcleData
-const recursion = (data: ArtcleData[]) => {
+const nav = toRaw(blogNav.value) as Array<ArticleData>
+// 递归把所有叶子节点放入数组articleData
+const recursion = (data: ArticleData[]) => {
   data.forEach(item => {
     if (item.children) {
       recursion(item.children)
     } else {
-      artcleData.push(
+      articleData.push(
         Object.assign(
           { img: rdmImg[Math.floor(Math.random() * rdmImg.length)] },
           item
@@ -66,7 +66,7 @@ let indexV = $ref(0)
 // 使用虚拟列表
 // 不区分大小写过滤
 const filteredList = computed(() =>
-  artcleData.filter(item =>
+  articleData.filter(item =>
     item.title.toLowerCase().includes(search.toLowerCase())
   )
 )

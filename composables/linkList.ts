@@ -264,5 +264,17 @@ export const developADocument: LinkList[] = [
     text: 'Vercel',
     icon: 'logos:vercel-icon',
     color: '#FF0000'
+  },
+  {
+    href: 'https://shields.io/',
+    text: 'shields',
+    icon: 'simple-icons:shieldsdotio',
+    color: '#191970'
+  },
+  {
+    href: 'https://emojipedia.org/',
+    text: 'emoji',
+    icon: 'material-symbols:emoji-food-beverage',
+    color: '#FFC0CB'
   }
 ]
